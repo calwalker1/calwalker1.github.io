@@ -4,7 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Hopper — The better playback tool for theatre rehearsals</title>
-  <meta name="description" content="Hopper syncs archival show video to your ETC EOS console via OSC. When a cue fires, the video jumps to that exact moment." />
+  <meta name="description" content="Hopper reads cue numbers from archival video, navigates by cue, and can follow your ETC EOS console over OSC. Native macOS for theatre rehearsals." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
@@ -29,17 +30,13 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero__grid">
         <div class="hero__copy">
-          <p class="eyebrow">Native macOS · ETC EOS</p>
           <h1 id="hero-title" class="hero__title">The better playback tool</h1>
           <p class="hero__lead">
-            Hopper plays back an archival recording of your show and keeps the video locked to a live
-            <strong>ETC EOS</strong> lighting console over <strong>OSC</strong>. When the operator fires cue 40, the
-            video jumps to the exact moment cue 40 ran in the recording.
+            Hopper is a powerful tool for managing show archivals. Import any archival video and Hopper will read the cue
+            numbers and lists straight out of the video. You can then navigate your video by cue or link Hopper to your
+            lighting console to have Hopper automatically follow along with the current cue.
           </p>
-          <p class="hero__body">
-            Scrubbing through long videos to find cues is slow, disruptive, and pulls focus away from the work at hand.
-            Hopper removes that friction—the moment a cue fires on the console, the picture is already there.
-          </p>
+          <p class="hero__tagline">An archival recording, always where you need it to be.</p>
           <div class="hero__actions">
             <a class="button button--primary" href="#download">Download latest version</a>
             <a class="button button--ghost" href="#how">See how it works</a>
@@ -115,69 +112,146 @@
       <div class="section__inner">
         <header class="section__header">
           <h2>Features</h2>
-          <p class="section__sub">Built for accuracy, rehearsal rooms, and real EOS workflows.</p>
+          <p class="section__sub">Built for accuracy, rehearsal rooms, and real EOS workflows. Select a topic for details.</p>
         </header>
-        <div class="feature-grid">
-          <article class="feature-card">
-            <h3>Frame-accurate cue sync</h3>
-            <p>
-              Hopper bisects between video frames to locate the precise moment each cue appeared on screen—typically
-              within one frame at 25 fps. Seeks are frame-accurate, not keyframe-approximate.
-            </p>
-          </article>
-          <article class="feature-card">
-            <h3>Automatic cue detection</h3>
-            <p>
-              The built-in OCR engine reads burnt-in cue numbers directly from the video using Apple’s Vision framework.
-              Common display formats are detected automatically—plain numbers, Q-prefixed, “Cue X Label 3.8s” overlays,
-              and more.
-            </p>
-          </article>
-          <article class="feature-card">
-            <h3>Rehearsal recording support</h3>
-            <p>
-              If a cue was rehearsed multiple times in the same recording, every instance is indexed. The cue list
-              shows all occurrences so you can jump to any specific run-through.
-            </p>
-          </article>
-          <article class="feature-card">
-            <h3>Multi-act sequences</h3>
-            <p>
-              Load Act 1, Act 2, and beyond as a single session. Hopper offsets all timestamps globally so cue
-              navigation works seamlessly across files.
-            </p>
-          </article>
-          <article class="feature-card">
-            <h3>Multitrack audio support</h3>
-            <p>
-              Select which audio tracks to play back. Useful for recordings with isolated stems—band, vocals,
-              effects—so the room hears only what’s relevant.
-            </p>
-          </article>
-          <article class="feature-card">
-            <h3>ETC EOS compatible</h3>
-            <p>
-              Works with EOS Family consoles (Eos, Ion, Element, and others) using standard OSC output. UDP on port 8000
-              or TCP on ports 3032/3037. No console modifications or special session files required.
-            </p>
-          </article>
-          <article class="feature-card">
-            <h3>Sidecar files</h3>
-            <p>
-              Cue data is stored in a small <code>.hopper</code> file alongside your video. Analysis only needs to run
-              once. The sidecar travels with the video and can be stored separately if the video lives on a shared drive.
-            </p>
-          </article>
-          <article class="feature-card">
-            <h3>Native macOS</h3>
-            <p>
-              Built entirely in Swift and SwiftUI. No Electron, no web views, no runtime dependencies. Runs natively on
-              Apple Silicon and Intel Macs running macOS 13 or later.
-            </p>
-          </article>
+        <div class="feature-grid feature-grid--cards">
+          <button type="button" class="feature-card feature-card--interactive" data-feature-modal="video-import" aria-haspopup="dialog" aria-controls="modal-video-import">
+            <span class="feature-card__icon" aria-hidden="true"><i class="fa-solid fa-file-video"></i></span>
+            <h3>Video import</h3>
+            <p>Open archival recordings and build a cue map from what’s on screen—no manual spreadsheet of timecodes.</p>
+            <span class="feature-card__hint">Learn more</span>
+          </button>
+          <button type="button" class="feature-card feature-card--interactive" data-feature-modal="show-management" aria-haspopup="dialog" aria-controls="modal-show-management">
+            <span class="feature-card__icon" aria-hidden="true"><i class="fa-solid fa-layer-group"></i></span>
+            <h3>Show management</h3>
+            <p>Organise multi-act runs, friendly performance names, and sidecar data that travels with your media.</p>
+            <span class="feature-card__hint">Learn more</span>
+          </button>
+          <button type="button" class="feature-card feature-card--interactive" data-feature-modal="cue-playback" aria-haspopup="dialog" aria-controls="modal-cue-playback">
+            <span class="feature-card__icon" aria-hidden="true"><i class="fa-solid fa-clapperboard"></i></span>
+            <h3>Cue playback</h3>
+            <p>Jump by cue from the list or follow a live ETC EOS console over OSC with frame-accurate seeks.</p>
+            <span class="feature-card__hint">Learn more</span>
+          </button>
+          <button type="button" class="feature-card feature-card--interactive" data-feature-modal="audio-control" aria-haspopup="dialog" aria-controls="modal-audio-control">
+            <span class="feature-card__icon" aria-hidden="true"><i class="fa-solid fa-sliders"></i></span>
+            <h3>Audio control</h3>
+            <p>Choose which embedded tracks to hear—ideal for stems, band, vocals, or effects in one recording.</p>
+            <span class="feature-card__hint">Learn more</span>
+          </button>
         </div>
       </div>
     </section>
+
+    <div id="feature-modal-root" class="modal-root" hidden>
+      <div class="modal-root__backdrop" data-modal-dismiss tabindex="-1"></div>
+      <div
+        id="modal-video-import"
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-video-import-title"
+        hidden
+      >
+        <div class="modal__header">
+          <h2 id="modal-video-import-title"><i class="fa-solid fa-file-video" aria-hidden="true"></i> Video import</h2>
+          <button type="button" class="modal__close" data-modal-dismiss aria-label="Close dialog"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+        </div>
+        <div class="modal__body">
+          <p>
+            Open standard video files from rehearsal or performance captures. Draw a rectangle over the burnt-in cue
+            display once; Hopper scans the video with on-device OCR (Apple Vision) and records every cue number and list
+            transition with a precise timestamp. Analysis results are saved in a small <code>.hopper</code> sidecar next
+            to the file so you rarely need to re-scan.
+          </p>
+          <figure class="modal__shot">
+            <div class="modal__shot-frame">
+              <img src="assets/feature-video-import.png" alt="Hopper video import and cue region selection" width="960" height="600" onerror="this.style.display='none'; this.parentElement.classList.add('modal__shot-frame--empty');" />
+              <span class="modal__shot-placeholder">Add screenshot at <code>assets/feature-video-import.png</code></span>
+            </div>
+          </figure>
+        </div>
+      </div>
+      <div
+        id="modal-show-management"
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-show-management-title"
+        hidden
+      >
+        <div class="modal__header">
+          <h2 id="modal-show-management-title"><i class="fa-solid fa-layer-group" aria-hidden="true"></i> Show management</h2>
+          <button type="button" class="modal__close" data-modal-dismiss aria-label="Close dialog"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+        </div>
+        <div class="modal__body">
+          <p>
+            String multiple videos into one session for full-show archivals: Hopper aligns timelines across acts so cue
+            navigation stays coherent. Give the performance a display name and act labels where it helps the room. Sidecar
+            files keep cue regions, track choices, and metadata portable—useful when video lives on shared storage.
+          </p>
+          <figure class="modal__shot">
+            <div class="modal__shot-frame">
+              <img src="assets/feature-show-management.png" alt="Hopper show and sequence management" width="960" height="600" onerror="this.style.display='none'; this.parentElement.classList.add('modal__shot-frame--empty');" />
+              <span class="modal__shot-placeholder">Add screenshot at <code>assets/feature-show-management.png</code></span>
+            </div>
+          </figure>
+        </div>
+      </div>
+      <div
+        id="modal-cue-playback"
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-cue-playback-title"
+        hidden
+      >
+        <div class="modal__header">
+          <h2 id="modal-cue-playback-title"><i class="fa-solid fa-clapperboard" aria-hidden="true"></i> Cue playback</h2>
+          <button type="button" class="modal__close" data-modal-dismiss aria-label="Close dialog"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+        </div>
+        <div class="modal__body">
+          <p>
+            Use the cue list to jump to any indexed moment, including multiple takes of the same cue in one recording.
+            To mirror the board, enable console follow: Hopper listens for standard ETC EOS outgoing OSC cue events (UDP
+            or TCP). When cue 40 fires on the console, the video seeks to the matching instant from your archival—frame-accurate,
+            not keyframe-guessed.
+          </p>
+          <figure class="modal__shot">
+            <div class="modal__shot-frame">
+              <img src="assets/feature-cue-playback.png" alt="Hopper cue list and console sync" width="960" height="600" onerror="this.style.display='none'; this.parentElement.classList.add('modal__shot-frame--empty');" />
+              <span class="modal__shot-placeholder">Add screenshot at <code>assets/feature-cue-playback.png</code></span>
+            </div>
+          </figure>
+        </div>
+      </div>
+      <div
+        id="modal-audio-control"
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-audio-control-title"
+        hidden
+      >
+        <div class="modal__header">
+          <h2 id="modal-audio-control-title"><i class="fa-solid fa-sliders" aria-hidden="true"></i> Audio control</h2>
+          <button type="button" class="modal__close" data-modal-dismiss aria-label="Close dialog"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+        </div>
+        <div class="modal__body">
+          <p>
+            Many archivals include multiple embedded audio tracks (for example isolated band, vocals, or FX). Hopper lets
+            you pick which tracks to play so the rehearsal room hears the right balance. Your choices can be stored in
+            the sidecar alongside cue data for consistent playback next time.
+          </p>
+          <figure class="modal__shot">
+            <div class="modal__shot-frame">
+              <img src="assets/feature-audio-control.png" alt="Hopper multitrack audio selection" width="960" height="600" onerror="this.style.display='none'; this.parentElement.classList.add('modal__shot-frame--empty');" />
+              <span class="modal__shot-placeholder">Add screenshot at <code>assets/feature-audio-control.png</code></span>
+            </div>
+          </figure>
+        </div>
+      </div>
+    </div>
 
     <section id="pricing" class="section section--pricing">
       <div class="section__inner section__inner--narrow">
@@ -216,6 +290,69 @@
       </div>
     </section>
   </main>
+
+  <script>
+    (function () {
+      var root = document.getElementById("feature-modal-root");
+      if (!root) return;
+      var modalIds = {
+        "video-import": "modal-video-import",
+        "show-management": "modal-show-management",
+        "cue-playback": "modal-cue-playback",
+        "audio-control": "modal-audio-control"
+      };
+      var openBtn = null;
+
+      function getOpenModal() {
+        return root.querySelector('.modal:not([hidden])');
+      }
+
+      function closeModal() {
+        var m = getOpenModal();
+        if (m) m.hidden = true;
+        root.hidden = true;
+        document.body.style.overflow = "";
+        if (openBtn) {
+          openBtn.focus();
+          openBtn = null;
+        }
+      }
+
+      function openModal(key, trigger) {
+        var id = modalIds[key];
+        if (!id) return;
+        var panel = document.getElementById(id);
+        if (!panel) return;
+        openBtn = trigger || document.activeElement;
+        root.querySelectorAll(".modal").forEach(function (el) {
+          el.hidden = el !== panel;
+        });
+        root.hidden = false;
+        document.body.style.overflow = "hidden";
+        var closeBtn = panel.querySelector(".modal__close");
+        if (closeBtn) closeBtn.focus();
+      }
+
+      document.querySelectorAll("[data-feature-modal]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          openModal(btn.getAttribute("data-feature-modal"), btn);
+        });
+      });
+
+      root.querySelectorAll("[data-modal-dismiss]").forEach(function (el) {
+        el.addEventListener("click", function () {
+          closeModal();
+        });
+      });
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && !root.hidden) {
+          e.preventDefault();
+          closeModal();
+        }
+      });
+    })();
+  </script>
 
   <footer class="site-footer">
     <div class="site-footer__inner">
