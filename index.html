@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hopper — The better playback tool for theatre rehearsals</title>
+  <meta name="description" content="Hopper syncs archival show video to your ETC EOS console via OSC. When a cue fires, the video jumps to that exact moment." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="logo" href="#">Hopper</a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#how">How it works</a>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a class="nav__cta" href="#download">Download</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__grid">
+        <div class="hero__copy">
+          <p class="eyebrow">Native macOS · ETC EOS</p>
+          <h1 id="hero-title" class="hero__title">The better playback tool</h1>
+          <p class="hero__lead">
+            Hopper plays back an archival recording of your show and keeps the video locked to a live
+            <strong>ETC EOS</strong> lighting console over <strong>OSC</strong>. When the operator fires cue 40, the
+            video jumps to the exact moment cue 40 ran in the recording.
+          </p>
+          <p class="hero__body">
+            Scrubbing through long videos to find cues is slow, disruptive, and pulls focus away from the work at hand.
+            Hopper removes that friction—the moment a cue fires on the console, the picture is already there.
+          </p>
+          <div class="hero__actions">
+            <a class="button button--primary" href="#download">Download latest version</a>
+            <a class="button button--ghost" href="#how">See how it works</a>
+          </div>
+        </div>
+        <figure class="hero__figure">
+          <div class="hero__frame" role="img" aria-label="Hopper app preview placeholder. Replace with your screenshot.">
+            <img
+              src="assets/hopper-preview.png"
+              alt="Hopper — video playback synced to lighting cues"
+              width="1200"
+              height="750"
+              onerror="this.style.display='none'; this.parentElement.classList.add('hero__frame--placeholder');"
+            />
+            <span class="hero__placeholder-label">Drop your screenshot at <code>assets/hopper-preview.png</code></span>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <section id="how" class="section section--how">
+      <div class="section__inner">
+        <header class="section__header">
+          <h2>How it works</h2>
+          <p class="section__sub">From import to session in four steps.</p>
+        </header>
+        <ol class="steps">
+          <li class="step">
+            <span class="step__num" aria-hidden="true">1</span>
+            <div class="step__body">
+              <h3>Import your recording</h3>
+              <p>
+                Open any video file of your show. Hopper supports multi-act productions—load an entire run as a
+                sequence and it jumps between videos automatically.
+              </p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step__num" aria-hidden="true">2</span>
+            <div class="step__body">
+              <h3>Draw a detection region</h3>
+              <p>
+                Drag a box over the burnt-in cue number on screen. Hopper uses on-device OCR to read the cue display
+                frame by frame and builds a precise map of every cue to its exact timestamp in the video.
+              </p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step__num" aria-hidden="true">3</span>
+            <div class="step__body">
+              <h3>Connect your console</h3>
+              <p>
+                Point your console’s OSC output at Hopper. UDP and TCP are both supported. No cue-level programming is
+                required on the console—Hopper listens for standard outgoing cue fire events.
+              </p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step__num" aria-hidden="true">4</span>
+            <div class="step__body">
+              <h3>Run the session</h3>
+              <p>
+                Press play and work the show as usual. Each time a cue fires on EOS, Hopper seeks the video to the
+                matching moment from your recording so designers and stage management stay aligned with the operator.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="features" class="section section--features">
+      <div class="section__inner">
+        <header class="section__header">
+          <h2>Features</h2>
+          <p class="section__sub">Built for accuracy, rehearsal rooms, and real EOS workflows.</p>
+        </header>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>Frame-accurate cue sync</h3>
+            <p>
+              Hopper bisects between video frames to locate the precise moment each cue appeared on screen—typically
+              within one frame at 25 fps. Seeks are frame-accurate, not keyframe-approximate.
+            </p>
+          </article>
+          <article class="feature-card">
+            <h3>Automatic cue detection</h3>
+            <p>
+              The built-in OCR engine reads burnt-in cue numbers directly from the video using Apple’s Vision framework.
+              Common display formats are detected automatically—plain numbers, Q-prefixed, “Cue X Label 3.8s” overlays,
+              and more.
+            </p>
+          </article>
+          <article class="feature-card">
+            <h3>Rehearsal recording support</h3>
+            <p>
+              If a cue was rehearsed multiple times in the same recording, every instance is indexed. The cue list
+              shows all occurrences so you can jump to any specific run-through.
+            </p>
+          </article>
+          <article class="feature-card">
+            <h3>Multi-act sequences</h3>
+            <p>
+              Load Act 1, Act 2, and beyond as a single session. Hopper offsets all timestamps globally so cue
+              navigation works seamlessly across files.
+            </p>
+          </article>
+          <article class="feature-card">
+            <h3>Multitrack audio support</h3>
+            <p>
+              Select which audio tracks to play back. Useful for recordings with isolated stems—band, vocals,
+              effects—so the room hears only what’s relevant.
+            </p>
+          </article>
+          <article class="feature-card">
+            <h3>ETC EOS compatible</h3>
+            <p>
+              Works with EOS Family consoles (Eos, Ion, Element, and others) using standard OSC output. UDP on port 8000
+              or TCP on ports 3032/3037. No console modifications or special session files required.
+            </p>
+          </article>
+          <article class="feature-card">
+            <h3>Sidecar files</h3>
+            <p>
+              Cue data is stored in a small <code>.hopper</code> file alongside your video. Analysis only needs to run
+              once. The sidecar travels with the video and can be stored separately if the video lives on a shared drive.
+            </p>
+          </article>
+          <article class="feature-card">
+            <h3>Native macOS</h3>
+            <p>
+              Built entirely in Swift and SwiftUI. No Electron, no web views, no runtime dependencies. Runs natively on
+              Apple Silicon and Intel Macs running macOS 13 or later.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" class="section section--pricing">
+      <div class="section__inner section__inner--narrow">
+        <header class="section__header">
+          <h2>Pricing</h2>
+        </header>
+        <div class="pricing-card">
+          <p class="pricing-card__price"><span class="pricing-card__amount">$50 AUD</span> / year</p>
+          <p class="pricing-card__tagline">Unlock a year of interruption-free playback.</p>
+          <ul class="pricing-card__list">
+            <li>
+              Hopper works without a license with no software limitations; every five minutes in the playback window it
+              pauses and reminds you it is unlicensed.
+            </li>
+            <li>
+              With a valid license, those reminders stop for one year from the date of purchase.
+            </li>
+            <li>
+              A license can be used on up to three computers. If you hit your limit, contact support and we will reset
+              your three activation slots (and deactivate those computers).
+            </li>
+            <li>An internet connection is required for license activation.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="download" class="section section--download">
+      <div class="section__inner section__inner--narrow">
+        <h2>Download</h2>
+        <p class="download__text">
+          Replace the link below with your hosted build or Gumroad/Paddle page when ready.
+        </p>
+        <a class="button button--primary button--large" href="#">Download latest version</a>
+        <p class="download__note">Requires macOS 13 or later.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <span class="logo logo--small">Hopper</span>
+      <p class="site-footer__meta">Theatre playback, synced to your console.</p>
+    </div>
+  </footer>
+</body>
+</html>
