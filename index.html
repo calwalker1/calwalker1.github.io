@@ -18,8 +18,8 @@
     <div class="site-header__inner">
       <a class="logo" href="#">Hopper</a>
       <nav class="nav" aria-label="Primary">
-        <a href="#how">How it works</a>
         <a href="#features">Features</a>
+        <a href="#how">How it works</a>
         <a href="#pricing">Pricing</a>
         <a class="nav__cta" href="#download">Download</a>
       </nav>
@@ -36,7 +36,7 @@
             numbers and lists straight out of the video. You can then navigate your video by cue or link Hopper to your
             lighting console to have Hopper automatically follow along with the current cue.
           </p>
-          <p class="hero__tagline">An archival recording, always where you need it to be.</p>
+          <p class="hero__tagline">Your archival recordings, always where you need them to be.</p>
           <div class="hero__actions">
             <a class="button button--primary" href="#download">Download latest version</a>
             <a class="button button--ghost" href="#how">See how it works</a>
@@ -54,57 +54,6 @@
             <span class="hero__placeholder-label">Drop your screenshot at <code>assets/hopper-preview.png</code></span>
           </div>
         </figure>
-      </div>
-    </section>
-
-    <section id="how" class="section section--how">
-      <div class="section__inner">
-        <header class="section__header">
-          <h2>How it works</h2>
-          <p class="section__sub">From import to session in four steps.</p>
-        </header>
-        <ol class="steps">
-          <li class="step">
-            <span class="step__num" aria-hidden="true">1</span>
-            <div class="step__body">
-              <h3>Import your recording</h3>
-              <p>
-                Open any video file of your show. Hopper supports multi-act productions—load an entire run as a
-                sequence and it jumps between videos automatically.
-              </p>
-            </div>
-          </li>
-          <li class="step">
-            <span class="step__num" aria-hidden="true">2</span>
-            <div class="step__body">
-              <h3>Draw a detection region</h3>
-              <p>
-                Drag a box over the burnt-in cue number on screen. Hopper uses on-device OCR to read the cue display
-                frame by frame and builds a precise map of every cue to its exact timestamp in the video.
-              </p>
-            </div>
-          </li>
-          <li class="step">
-            <span class="step__num" aria-hidden="true">3</span>
-            <div class="step__body">
-              <h3>Connect your console</h3>
-              <p>
-                Point your console’s OSC output at Hopper. UDP and TCP are both supported. No cue-level programming is
-                required on the console—Hopper listens for standard outgoing cue fire events.
-              </p>
-            </div>
-          </li>
-          <li class="step">
-            <span class="step__num" aria-hidden="true">4</span>
-            <div class="step__body">
-              <h3>Run the session</h3>
-              <p>
-                Press play and work the show as usual. Each time a cue fires on EOS, Hopper seeks the video to the
-                matching moment from your recording so designers and stage management stay aligned with the operator.
-              </p>
-            </div>
-          </li>
-        </ol>
       </div>
     </section>
 
@@ -252,6 +201,57 @@
         </div>
       </div>
     </div>
+
+    <section id="how" class="section section--how">
+      <div class="section__inner">
+        <header class="section__header">
+          <h2>How it works</h2>
+          <p class="section__sub">From import to session in four steps.</p>
+        </header>
+        <ol class="steps">
+          <li class="step">
+            <span class="step__num" aria-hidden="true">1</span>
+            <div class="step__body">
+              <h3>Import your recording</h3>
+              <p>
+                Open any video file of your show. Hopper supports multi-act productions—load an entire run as a
+                sequence and it jumps between videos automatically.
+              </p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step__num" aria-hidden="true">2</span>
+            <div class="step__body">
+              <h3>Draw a detection region</h3>
+              <p>
+                Drag a box over the burnt-in cue number on screen. Hopper uses on-device OCR to read the cue display
+                frame by frame and builds a precise map of every cue to its exact timestamp in the video.
+              </p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step__num" aria-hidden="true">3</span>
+            <div class="step__body">
+              <h3>Connect your console</h3>
+              <p>
+                Point your console’s OSC output at Hopper. UDP and TCP are both supported. No cue-level programming is
+                required on the console—Hopper listens for standard outgoing cue fire events.
+              </p>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step__num" aria-hidden="true">4</span>
+            <div class="step__body">
+              <h3>Run the session</h3>
+              <p>
+                Press play and work the show as usual. Each time a cue fires on EOS, Hopper seeks the video to the
+                matching moment from your recording so designers and stage management stay aligned with the operator.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
 
     <section id="pricing" class="section section--pricing">
       <div class="section__inner section__inner--narrow">
