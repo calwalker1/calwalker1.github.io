@@ -1,15 +1,15 @@
-/* Hopper marketing site — dark stage / warm spotlight */
+/* Hopper marketing site — light studio / warm spotlight */
 
 :root {
-  --bg: #0c0c0e;
-  --bg-elevated: #131316;
-  --bg-card: #18181c;
-  --border: rgba(255, 245, 220, 0.08);
-  --text: #f2f0eb;
-  --text-muted: #9b9890;
-  --accent: #d4a24c;
-  --accent-soft: rgba(212, 162, 76, 0.15);
-  --accent-glow: rgba(212, 162, 76, 0.35);
+  --bg: #f6f7fb;
+  --bg-elevated: #ffffff;
+  --bg-card: #ffffff;
+  --border: rgba(18, 18, 24, 0.12);
+  --text: #15151c;
+  --text-muted: #565662;
+  --accent: #b7791f;
+  --accent-soft: rgba(183, 121, 31, 0.15);
+  --accent-glow: rgba(183, 121, 31, 0.28);
   --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
   --radius: 12px;
@@ -31,7 +31,7 @@ html {
 body {
   margin: 0;
   font-family: var(--font-sans);
-  font-size: 1.0625rem;
+  font-size: 1.125rem;
   line-height: 1.6;
   color: var(--text);
   background: var(--bg);
@@ -227,7 +227,7 @@ body {
 
 .button--ghost:hover {
   border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(0, 0, 0, 0.03);
 }
 
 .button--large {
@@ -263,7 +263,7 @@ body {
   align-items: center;
   justify-content: center;
   background:
-    linear-gradient(145deg, #1a1916 0%, #0e0e10 100%);
+    linear-gradient(145deg, #f1f2f7 0%, #e9ebf2 100%);
 }
 
 .hero__frame--placeholder .hero__placeholder-label {
@@ -285,7 +285,7 @@ body {
   font-size: 0.8125rem;
   padding: 0.15rem 0.4rem;
   border-radius: 6px;
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(0, 0, 0, 0.06);
   color: var(--accent);
 }
 
@@ -473,13 +473,14 @@ body {
 
 .feature-card h3 {
   margin: 0 0 0.6rem;
-  font-size: 1.0625rem;
+  font-size: 1.2rem;
   font-weight: 600;
+  color: var(--text);
 }
 
 .feature-card p {
   margin: 0 0 0.85rem;
-  font-size: 0.9375rem;
+  font-size: 1rem;
   color: var(--text-muted);
 }
 
@@ -488,7 +489,7 @@ body {
 }
 
 .feature-card__hint {
-  font-size: 0.8125rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--accent);
 }
@@ -497,7 +498,7 @@ body {
   font-size: 0.875em;
   padding: 0.1em 0.35em;
   border-radius: 4px;
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(0, 0, 0, 0.06);
   color: var(--accent);
 }
 
@@ -521,7 +522,8 @@ body {
 .modal-root__backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.72);
+  z-index: 0;
+  background: rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(4px);
 }
 
@@ -537,8 +539,8 @@ body {
   background: var(--bg-card);
   border: 1px solid var(--border);
   box-shadow:
-    0 32px 100px -24px rgba(0, 0, 0, 0.75),
-    0 0 0 1px rgba(212, 162, 76, 0.08);
+    0 28px 90px -30px rgba(0, 0, 0, 0.35),
+    0 0 0 1px color-mix(in srgb, var(--accent) 14%, var(--border));
 }
 
 .modal[hidden] {
@@ -559,6 +561,7 @@ body {
   font-family: var(--font-serif);
   font-size: 1.35rem;
   font-weight: 400;
+  color: var(--text);
   display: flex;
   align-items: center;
   gap: 0.6rem;
@@ -579,7 +582,7 @@ body {
   padding: 0;
   border: none;
   border-radius: 8px;
-  background: transparent;
+  background: rgba(0, 0, 0, 0.02);
   color: var(--text-muted);
   cursor: pointer;
   font-size: 1.125rem;
@@ -588,7 +591,12 @@ body {
 
 .modal__close:hover {
   color: var(--text);
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.modal__close:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.06), 0 0 0 4px var(--accent);
 }
 
 .modal__body {
@@ -597,7 +605,7 @@ body {
 
 .modal__body p {
   margin: 0 0 1.25rem;
-  font-size: 0.9375rem;
+  font-size: 1rem;
   color: var(--text-muted);
   line-height: 1.65;
 }
@@ -655,7 +663,7 @@ body {
   font-size: 0.8125rem;
   padding: 0.15rem 0.4rem;
   border-radius: 6px;
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(0, 0, 0, 0.06);
   color: var(--accent);
 }
 
@@ -663,7 +671,7 @@ body {
   font-size: 0.875em;
   padding: 0.1em 0.35em;
   border-radius: 4px;
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(0, 0, 0, 0.06);
   color: var(--accent);
 }
 
