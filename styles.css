@@ -86,12 +86,24 @@ body {
 }
 
 .logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
   font-family: var(--font-serif);
   font-size: 1.5rem;
   font-weight: 400;
   letter-spacing: 0.02em;
   color: var(--text);
   text-decoration: none;
+}
+
+.logo__mark {
+  height: calc(var(--header-h) - 1.25rem);
+  width: auto;
+  max-width: min(11rem, 42vw);
+  object-fit: contain;
+  flex-shrink: 0;
+  display: block;
 }
 
 .logo--small {
