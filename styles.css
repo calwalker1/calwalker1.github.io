@@ -647,6 +647,17 @@ body {
   vertical-align: middle;
 }
 
+.modal__shot-frame video {
+  display: block;
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+.modal__shot-frame--no-border {
+  border: 0;
+}
+
 .modal__shot-placeholder {
   display: none;
   position: absolute;

@@ -46,8 +46,8 @@
           <h1 id="hero-title" class="hero__title">The better playback tool</h1>
           <p class="hero__lead">
             Hopper is a powerful tool for managing show archivals. Import any archival video and Hopper will read the cue
-            numbers and lists straight out of the video. You can then navigate your video by cue or link Hopper to your
-            lighting console to have Hopper automatically follow along with the current cue.
+            numbers and labels straight out of the video. You can then navigate your video by cue or link Hopper to your
+            lighting console to have Hopper automatically follow along with what's on stage.
           </p>
           <p class="hero__tagline">Your archival recordings, always where you need them to be.</p>
           <div class="hero__actions">
@@ -74,7 +74,7 @@
       <div class="section__inner">
         <header class="section__header">
           <h2>Features</h2>
-          <p class="section__sub">Built for accuracy, rehearsal rooms, and real EOS workflows. Select a topic for details.</p>
+          <p class="section__sub">Learn about Hopper's features and how they make rehearsals, plotting and show-runs a breeze!</p>
         </header>
         <div class="feature-grid feature-grid--cards">
           <button type="button" class="feature-card feature-card--interactive" data-feature-modal="video-import" aria-haspopup="dialog" aria-controls="modal-video-import">
@@ -98,7 +98,7 @@
           <button type="button" class="feature-card feature-card--interactive" data-feature-modal="audio-control" aria-haspopup="dialog" aria-controls="modal-audio-control">
             <span class="feature-card__icon" aria-hidden="true"><i class="fa-solid fa-sliders"></i></span>
             <h3>Audio control</h3>
-            <p>Choose which embedded tracks to hear—ideal for stems, band, vocals, or effects in one recording.</p>
+            <p>Choose which embedded tracks to hear—ideal for multi-channel recordings with comms, PGM and Timecode.</p>
             <span class="feature-card__hint">Learn more</span>
           </button>
         </div>
@@ -201,14 +201,15 @@
         </div>
         <div class="modal__body">
           <p>
-            Many archivals include multiple embedded audio tracks (for example isolated band, vocals, or FX). Hopper lets
-            you pick which tracks to play so the rehearsal room hears the right balance. Your choices can be stored in
-            the sidecar alongside cue data for consistent playback next time.
+            Support for multi-channel archivals inclduing PGM, Comms and Timecode. Hopper lets
+            you label, toggle and hide channels and with the <b>auto-level</b> feature you can clearly hear all channels at once.
           </p>
           <figure class="modal__shot">
-            <div class="modal__shot-frame">
-              <img src="assets/feature-audio-control.png" alt="Hopper multitrack audio selection" width="960" height="600" onerror="this.style.display='none'; this.parentElement.classList.add('modal__shot-frame--empty');" />
-              <span class="modal__shot-placeholder">Add screenshot at <code>assets/feature-audio-control.png</code></span>
+            <div class="modal__shot-frame modal__shot-frame--no-border">
+              <video autoplay loop muted playsinline preload="metadata" aria-label="Hopper multitrack audio selection demo">
+                <source src="assets/feature-audio-control.mp4" type="video/mp4" />
+                <img src="assets/feature-audio-control.webp" alt="Hopper multitrack audio selection" width="596" height="584" />
+              </video>
             </div>
           </figure>
         </div>
@@ -296,9 +297,9 @@
       <div class="section__inner section__inner--narrow">
         <h2>Download</h2>
         <p class="download__text">
-          Replace the link below with your hosted build or Gumroad/Paddle page when ready.
+          Hopper is free to download, a license is required to unlock uninterrupted playback
         </p>
-        <a class="button button--primary button--large" href="#">Download latest version</a>
+        <a class="button button--primary button--large" href="#https://hopperplayer.com/releases/hopper_v02.dmg">Download latest version</a>
         <p class="download__note">Requires macOS 13 or later.</p>
       </div>
     </section>
