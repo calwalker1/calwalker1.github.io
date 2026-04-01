@@ -7,12 +7,25 @@
     <link>https://hopperplayer.com/releases/appcast.xml</link>
     <description>Hopper release history.</description>
     <language>en</language>
+    <item>
+      <title>Version 0.3</title>
+      <pubDate>Wed, 1 Apr 2026 00:00:00 +0000</pubDate>
+      <sparkle:version>2</sparkle:version>
+      <sparkle:shortVersionString>0.2</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+      <enclosure
+        url="https://hopperplayer.com/releases/hopperapp_0.2.dmg"
+        sparkle:edSignature="REPLACE_WITH_SIGNATURE"
+        length="4000"
+        type="application/x-apple-diskimage"
+      />
+    </item>
 
     <item>
-      <title>Version 9.2</title>
+      <title>Version 0.2</title>
       <pubDate>Mon, 30 Mar 2026 00:00:00 +0000</pubDate>
-      <sparkle:version>3</sparkle:version>
-      <sparkle:shortVersionString>9.2</sparkle:shortVersionString>
+      <sparkle:version>1</sparkle:version>
+      <sparkle:shortVersionString>0.2</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
       <enclosure
         url="https://hopperplayer.com/releases/hopperapp_0.2.dmg"
