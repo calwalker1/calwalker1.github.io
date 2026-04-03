@@ -79,6 +79,35 @@
       text-transform: uppercase;
     }
 
+    .license-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .button--copy {
+      flex-shrink: 0;
+      padding-inline: 1rem;
+      cursor: pointer;
+      background: var(--bg-card);
+      border-color: var(--border);
+      color: var(--text);
+    }
+
+    .button--copy:hover {
+      border-color: color-mix(in srgb, var(--accent) 28%, var(--border));
+      color: var(--accent);
+    }
+
+    .thankyou-actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+
     .support-note {
       margin-top: 1.5rem;
       padding-top: 1.5rem;
@@ -136,7 +165,14 @@
 
         <div class="license-panel" aria-live="polite">
           <p class="license-label">Your License Number</p>
-          <p class="license-value" id="license-value">Waiting for license key...</p>
+          <div class="license-row">
+            <p class="license-value" id="license-value">Waiting for license key...</p>
+            <button class="button button--ghost button--copy" id="copy-license" type="button">Copy</button>
+          </div>
+        </div>
+
+        <div class="thankyou-actions">
+          <a class="button button--primary" id="activate-license" href="hopper://license/HOPR-XXXX-XXXX-XXXX">Activate license on my machine now</a>
         </div>
 
         <p class="support-note">
@@ -156,10 +192,38 @@
         params.get("licenseKey") ||
         params.get("license_key");
       var value = document.getElementById("license-value");
+      var copyButton = document.getElementById("copy-license");
+      var activateLink = document.getElementById("activate-license");
 
       if (!value) return;
 
-      value.textContent = licenseKey ? licenseKey.toUpperCase() : "No license key was provided in the URL.";
+      var normalizedKey = licenseKey ? licenseKey.toUpperCase() : "";
+
+      value.textContent = normalizedKey || "No license key was provided in the URL.";
+
+      if (activateLink && normalizedKey) {
+        activateLink.href = "hopper://license/" + encodeURIComponent(normalizedKey);
+      }
+
+      if (activateLink && !normalizedKey) {
+        activateLink.setAttribute("aria-disabled", "true");
+        activateLink.removeAttribute("href");
+        activateLink.style.pointerEvents = "none";
+        activateLink.style.opacity = "0.6";
+      }
+
+      if (copyButton) {
+        copyButton.addEventListener("click", function () {
+          if (!normalizedKey || !navigator.clipboard) return;
+
+          navigator.clipboard.writeText(normalizedKey).then(function () {
+            copyButton.textContent = "Copied";
+            window.setTimeout(function () {
+              copyButton.textContent = "Copy";
+            }, 1500);
+          });
+        });
+      }
     })();
   </script>
 </body>
