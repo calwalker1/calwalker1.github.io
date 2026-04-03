@@ -701,6 +701,20 @@ body {
 
 /* Pricing */
 
+.pricing-notes {
+  margin-bottom: 2rem;
+  color: var(--text-muted);
+  font-size: 0.98rem;
+}
+
+.pricing-notes p {
+  margin: 0 0 0.85rem;
+}
+
+.pricing-notes p:last-child {
+  margin-bottom: 0;
+}
+
 .pricing-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -725,25 +739,16 @@ body {
   color: var(--accent);
 }
 
+.pricing-card__machines {
+  margin: 0 0 0.4rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
 .pricing-card__tagline {
   margin: 0 0 1.5rem;
   color: var(--text-muted);
   font-size: 1rem;
-}
-
-.pricing-card__list {
-  margin: 0;
-  padding-left: 1.25rem;
-  color: var(--text-muted);
-  font-size: 0.9375rem;
-}
-
-.pricing-card__list li {
-  margin-bottom: 0.85rem;
-}
-
-.pricing-card__list li:last-child {
-  margin-bottom: 0;
 }
 
 @media (max-width: 720px) {
