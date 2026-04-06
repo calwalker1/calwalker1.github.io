@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Offline Deactivation | Hopper</title>
+  <meta
+    name="description"
+    content="Offline deactivation status for Hopper, with an optional message from the deactivation flow."
+  />
+  <link rel="icon" href="../assets/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .thankyou-page {
+      min-height: 100vh;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -20%, var(--accent-soft), transparent),
+        var(--bg);
+    }
+
+    .thankyou-main {
+      padding: 4rem 1.5rem 5rem;
+    }
+
+    .thankyou-shell {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .thankyou-card {
+      padding: 2rem;
+      border-radius: var(--radius-lg);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      box-shadow: 0 0 40px -10px var(--accent-glow);
+    }
+
+    .thankyou-card h1 {
+      margin: 0 0 1rem;
+      font-family: var(--font-serif);
+      font-size: clamp(2.25rem, 5vw, 3.25rem);
+      font-weight: 400;
+      line-height: 1.1;
+    }
+
+    .thankyou-card p {
+      margin: 0 0 1rem;
+      color: var(--text-muted);
+    }
+
+    .message-panel {
+      margin: 2rem 0 1.5rem;
+      padding: 1.5rem;
+      border-radius: 18px;
+      background: color-mix(in srgb, var(--accent-soft) 55%, white);
+      border: 1px solid color-mix(in srgb, var(--accent) 22%, white);
+    }
+
+    .message-label {
+      margin: 0 0 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .message-value {
+      margin: 0;
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      font-weight: 600;
+      line-height: 1.5;
+      color: var(--text);
+      word-break: break-word;
+    }
+
+    .support-note {
+      margin-top: 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .support-note a {
+      color: var(--accent);
+    }
+
+    @media (max-width: 640px) {
+      .thankyou-main {
+        padding-top: 2.5rem;
+      }
+
+      .thankyou-card {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body class="thankyou-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="logo" href="../index.html">
+        <img
+          class="logo__mark"
+          src="../assets/Header.png"
+          alt=""
+          width="849"
+          height="547"
+          decoding="async"
+        />
+        Hopper
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="../index.html#features">Features</a>
+        <a href="../index.html#pricing">Pricing</a>
+        <a class="nav__cta" href="../index.html#download">Download</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="thankyou-main">
+    <div class="thankyou-shell">
+      <section class="thankyou-card" aria-labelledby="offline-deactivation-title">
+        <p class="eyebrow">Offline Deactivation</p>
+        <h1 id="offline-deactivation-title">Your deactivation status is shown below.</h1>
+        <p id="deactivation-intro">
+          Review the message below for the outcome of your offline deactivation.
+        </p>
+
+        <div class="message-panel" aria-live="polite">
+          <p class="message-label">Status Message</p>
+          <p class="message-value" id="deactivation-message">
+            Offline deactivation was succesfull and you can now close the window in Hopper and close this browser
+            window.
+          </p>
+        </div>
+
+        <p class="support-note" id="support-note">
+          You can now return to Hopper to continue.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var message = params.get("message");
+      var value = document.getElementById("deactivation-message");
+      var intro = document.getElementById("deactivation-intro");
+      var supportNote = document.getElementById("support-note");
+
+      if (!value) return;
+
+      if (message) {
+        value.textContent = message;
+
+        if (intro) {
+          intro.textContent = "Your offline deactivation has not completed successfully.";
+        }
+
+        if (supportNote) {
+          supportNote.innerHTML =
+            'Please contact <a href="mailto:support@hopperplayer.com">support@hopperplayer.com</a> if you are unable to complete deactivation.';
+        }
+
+        return;
+      }
+
+      value.textContent =
+        "Offline deactivation was succesfull and you can now close the window in Hopper and close this browser window.";
+    })();
+  </script>
+</body>
+</html>
