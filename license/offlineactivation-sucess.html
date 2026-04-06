@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Offline Activation Code | Hopper</title>
+  <meta
+    name="description"
+    content="Your offline activation code for Hopper. Keep this window open until activation is complete in the app."
+  />
+  <link rel="icon" href="../assets/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .thankyou-page {
+      min-height: 100vh;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -20%, var(--accent-soft), transparent),
+        var(--bg);
+    }
+
+    .thankyou-main {
+      padding: 4rem 1.5rem 5rem;
+    }
+
+    .thankyou-shell {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .thankyou-card {
+      padding: 2rem;
+      border-radius: var(--radius-lg);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      box-shadow: 0 0 40px -10px var(--accent-glow);
+    }
+
+    .warning-banner {
+      margin: 0 0 1.5rem;
+      padding: 1rem 1.125rem;
+      border-radius: 18px;
+      background: color-mix(in srgb, #fff2d8 78%, white);
+      border: 1px solid color-mix(in srgb, #d98700 35%, white);
+      color: #7a4a00;
+      font-weight: 700;
+    }
+
+    .thankyou-card h1 {
+      margin: 0 0 1rem;
+      font-family: var(--font-serif);
+      font-size: clamp(2.25rem, 5vw, 3.25rem);
+      font-weight: 400;
+      line-height: 1.1;
+    }
+
+    .thankyou-card p {
+      margin: 0 0 1rem;
+      color: var(--text-muted);
+    }
+
+    .license-panel {
+      margin: 2rem 0 1.5rem;
+      padding: 1.5rem;
+      border-radius: 18px;
+      background: color-mix(in srgb, var(--accent-soft) 55%, white);
+      border: 1px solid color-mix(in srgb, var(--accent) 22%, white);
+    }
+
+    .license-label {
+      margin: 0 0 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .license-value {
+      margin: 0;
+      font-family: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: clamp(1.5rem, 3.6vw, 2.4rem);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: 0.12em;
+      color: var(--text);
+      word-break: break-word;
+      text-transform: uppercase;
+    }
+
+    .license-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .button--copy {
+      flex-shrink: 0;
+      padding-inline: 1rem;
+      cursor: pointer;
+      background: var(--bg-card);
+      border-color: var(--border);
+      color: var(--text);
+    }
+
+    .button--copy:hover {
+      border-color: color-mix(in srgb, var(--accent) 28%, var(--border));
+      color: var(--accent);
+    }
+
+    .support-note {
+      margin-top: 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .support-note a {
+      color: var(--accent);
+    }
+
+    @media (max-width: 640px) {
+      .thankyou-main {
+        padding-top: 2.5rem;
+      }
+
+      .thankyou-card {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body class="thankyou-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="logo" href="../index.html">
+        <img
+          class="logo__mark"
+          src="../assets/Header.png"
+          alt=""
+          width="849"
+          height="547"
+          decoding="async"
+        />
+        Hopper
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="../index.html#features">Features</a>
+        <a href="../index.html#pricing">Pricing</a>
+        <a class="nav__cta" href="../index.html#download">Download</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="thankyou-main">
+    <div class="thankyou-shell">
+      <section class="thankyou-card" aria-labelledby="offline-title">
+        <p class="warning-banner">
+          Do not close this window until you have entered it into Hopper and seen it complete activation!
+        </p>
+
+        <p class="eyebrow">Offline Activation</p>
+        <h1 id="offline-title">Your offline activation code is ready.</h1>
+        <p>
+          Enter this code into Hopper to complete your offline registration. Keep this page open until Hopper confirms
+          activation has finished successfully.
+        </p>
+
+        <div class="license-panel" aria-live="polite">
+          <p class="license-label">Offline Activation Code</p>
+          <div class="license-row">
+            <p class="license-value" id="activation-code">Waiting for activation code...</p>
+            <button class="button button--ghost button--copy" id="copy-code" type="button">Copy</button>
+          </div>
+        </div>
+
+        <p class="support-note">
+          If you have any trouble completing activation, contact
+          <a href="mailto:support@hopperplayer.com">support@hopperplayer.com</a>.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var activationCode = params.get("code");
+      var value = document.getElementById("activation-code");
+      var copyButton = document.getElementById("copy-code");
+
+      if (!value) return;
+
+      var normalizedCode = activationCode ? activationCode.toUpperCase() : "";
+
+      value.textContent = normalizedCode || "No activation code was provided in the URL.";
+
+      if (copyButton) {
+        if (!normalizedCode) {
+          copyButton.disabled = true;
+          copyButton.style.opacity = "0.6";
+          copyButton.style.cursor = "not-allowed";
+          return;
+        }
+
+        copyButton.addEventListener("click", function () {
+          if (!navigator.clipboard) return;
+
+          navigator.clipboard.writeText(normalizedCode).then(function () {
+            copyButton.textContent = "Copied";
+            window.setTimeout(function () {
+              copyButton.textContent = "Copy";
+            }, 1500);
+          });
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

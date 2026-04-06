@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Offline Activation Failed | Hopper</title>
+  <meta
+    name="description"
+    content="Your Hopper offline activation failed. Review the reason provided and contact support if needed."
+  />
+  <link rel="icon" href="../assets/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .thankyou-page {
+      min-height: 100vh;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -20%, color-mix(in srgb, #f8d9dd 70%, white), transparent),
+        var(--bg);
+    }
+
+    .thankyou-main {
+      padding: 4rem 1.5rem 5rem;
+    }
+
+    .thankyou-shell {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .thankyou-card {
+      padding: 2rem;
+      border-radius: var(--radius-lg);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      box-shadow: 0 0 40px -10px color-mix(in srgb, #b42318 22%, transparent);
+    }
+
+    .warning-banner {
+      margin: 0 0 1.5rem;
+      padding: 1rem 1.125rem;
+      border-radius: 18px;
+      background: color-mix(in srgb, #fde2e2 82%, white);
+      border: 1px solid color-mix(in srgb, #b42318 30%, white);
+      color: #8a1c13;
+      font-weight: 700;
+    }
+
+    .thankyou-card h1 {
+      margin: 0 0 1rem;
+      font-family: var(--font-serif);
+      font-size: clamp(2.25rem, 5vw, 3.25rem);
+      font-weight: 400;
+      line-height: 1.1;
+    }
+
+    .thankyou-card p {
+      margin: 0 0 1rem;
+      color: var(--text-muted);
+    }
+
+    .license-panel {
+      margin: 2rem 0 1.5rem;
+      padding: 1.5rem;
+      border-radius: 18px;
+      background: color-mix(in srgb, #fdebed 78%, white);
+      border: 1px solid color-mix(in srgb, #b42318 24%, white);
+    }
+
+    .license-label {
+      margin: 0 0 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #b42318;
+    }
+
+    .license-value {
+      margin: 0;
+      font-family: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: clamp(1.3rem, 3vw, 2rem);
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--text);
+      word-break: break-word;
+    }
+
+    .support-note {
+      margin-top: 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .support-note a {
+      color: var(--accent);
+    }
+
+    @media (max-width: 640px) {
+      .thankyou-main {
+        padding-top: 2.5rem;
+      }
+
+      .thankyou-card {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body class="thankyou-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="logo" href="../index.html">
+        <img
+          class="logo__mark"
+          src="../assets/Header.png"
+          alt=""
+          width="849"
+          height="547"
+          decoding="async"
+        />
+        Hopper
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="../index.html#features">Features</a>
+        <a href="../index.html#pricing">Pricing</a>
+        <a class="nav__cta" href="../index.html#download">Download</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="thankyou-main">
+    <div class="thankyou-shell">
+      <section class="thankyou-card" aria-labelledby="offline-fail-title">
+        <p class="warning-banner">Your license activation has failed.</p>
+
+        <p class="eyebrow">Offline Activation</p>
+        <h1 id="offline-fail-title">Your license activation has failed due to the reason below.</h1>
+        <p>
+          Please contact <a href="mailto:support@hopperplayer.com">support@hopperplayer.com</a> if you are unable to
+          get activation working.
+        </p>
+
+        <div class="license-panel" aria-live="polite">
+          <p class="license-label">Failure Reason</p>
+          <p class="license-value" id="failure-reason">Waiting for failure reason...</p>
+        </div>
+
+        <p class="support-note">
+          If you need help, email <a href="mailto:support@hopperplayer.com">support@hopperplayer.com</a> with the
+          reason shown above and any details about the machine you are activating.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var reason = params.get("reason");
+      var value = document.getElementById("failure-reason");
+
+      if (!value) return;
+
+      value.textContent = reason || "No failure reason was provided in the URL.";
+    })();
+  </script>
+</body>
+</html>
