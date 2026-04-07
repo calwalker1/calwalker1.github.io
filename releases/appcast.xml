@@ -7,7 +7,28 @@
     <link>https://hopperplayer.com/releases/appcast.xml</link>
     <description>Hopper release history.</description>
     <language>en</language>
+    
     <item>
+      <title>Version 0.5</title>
+      <pubDate>Tue, 07 Apr 2026 07:37:41 +0000</pubDate>
+      <sparkle:version>3</sparkle:version>
+      <sparkle:shortVersionString>0.5</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[
+<p>07 April</p>
+<h3>Licensing</h3>
+<ul>
+  <li>Added offline license activation and deactivation, users can enter their license code into Hopper and then scan a QR code with their phone to complete activation remotely.</li>
+</ul>
+      ]]></description>
+      <enclosure
+        url="https://hopperplayer.com/releases/Hopper_v0.5.dmg"
+        sparkle:edSignature="yE6Dd8Y5ouNxS5vo/txSkv5sCsmFnjqEJuYpx+HPiKcHMI9Db4CD7OshxNe6f6EZNzlDiZwBkKMKgJ6sNQjWBA=="
+        length="5514712"
+        type="application/x-apple-diskimage"
+      />
+    </item>
+<item>
       <title>Version 0.3</title>
       <pubDate>Wed, 1 Apr 2026 00:00:00 +0000</pubDate>
       <sparkle:version>2</sparkle:version>
