@@ -185,9 +185,11 @@
             not keyframe-guessed.
           </p>
           <figure class="modal__shot">
-            <div class="modal__shot-frame">
-              <img src="assets/feature-cue-playback.png" alt="Hopper cue list and console sync" width="960" height="600" onerror="this.style.display='none'; this.parentElement.classList.add('modal__shot-frame--empty');" />
-              <span class="modal__shot-placeholder">Add screenshot at <code>assets/feature-cue-playback.png</code></span>
+            <div class="modal__shot-frame modal__shot-frame--no-border" style="--shot-ratio: 1280 / 720;">
+              <video autoplay loop muted playsinline preload="metadata" poster="assets/feature-cue-playback.webp" aria-label="Hopper cue list and console sync demo">
+                <source src="assets/feature-cue-playback.mp4" type="video/mp4" />
+                <img src="assets/feature-cue-playback.webp" alt="Hopper cue list and console sync" width="1280" height="720" />
+              </video>
             </div>
           </figure>
         </div>
