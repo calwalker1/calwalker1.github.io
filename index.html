@@ -128,9 +128,11 @@
             to the file so you rarely need to re-scan.
           </p>
           <figure class="modal__shot">
-            <div class="modal__shot-frame">
-              <img src="assets/feature-video-import.png" alt="Hopper video import and cue region selection" width="960" height="600" onerror="this.style.display='none'; this.parentElement.classList.add('modal__shot-frame--empty');" />
-              <span class="modal__shot-placeholder">Add screenshot at <code>assets/feature-video-import.png</code></span>
+            <div class="modal__shot-frame modal__shot-frame--no-border" style="--shot-ratio: 1280 / 720;">
+              <video autoplay loop muted playsinline preload="metadata" poster="assets/feature-video-import.webp" aria-label="Hopper video import and cue region selection demo">
+                <source src="assets/feature-video-import.mp4" type="video/mp4" />
+                <img src="assets/feature-video-import.webp" alt="Hopper video import and cue region selection" width="1280" height="720" />
+              </video>
             </div>
           </figure>
         </div>
