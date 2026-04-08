@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Hopper — The better playback tool for theatre rehearsals</title>
-  <meta name="description" content="Hopper reads cue numbers from archival video, navigates by cue, and can follow your ETC EOS console over OSC. Native macOS for theatre rehearsals." />
+  <meta name="description" content="Hopper reads cue numbers from your archival video and lets you navigate by cue — or link it to your lighting console to follow along automatically. Native macOS for theatre rehearsals." />
   <link rel="icon" href="assets/favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png" />
@@ -123,9 +123,8 @@
         <div class="modal__body">
           <p>
             Open standard video files from rehearsal or performance captures. Draw a rectangle over the burnt-in cue
-            display once; Hopper scans the video with on-device OCR (Apple Vision) and records every cue number and list
-            transition with a precise timestamp. Analysis results are saved in a small <code>.hopper</code> sidecar next
-            to the file so you rarely need to re-scan.
+            display once; Hopper scans the video and records every cue number and transition with a precise timestamp.
+            Results are saved in a small file alongside your video so you rarely need to re-scan.
           </p>
           <figure class="modal__shot">
             <div class="modal__shot-frame modal__shot-frame--no-border" style="--shot-ratio: 1280 / 720;">
@@ -152,8 +151,8 @@
         <div class="modal__body">
           <p>
             String multiple videos into one session for full-show archivals: Hopper aligns timelines across acts so cue
-            navigation stays coherent. Give the performance a display name and act labels where it helps the room. Sidecar
-            files keep cue regions, track choices, and metadata portable—useful when video lives on shared storage.
+            navigation stays coherent. Give the performance a display name and act labels where it helps the room. Small
+            companion files keep your settings and cue data portable—useful when video lives on shared storage.
           </p>
           <figure class="modal__shot">
             <div class="modal__shot-frame" style="--shot-ratio: 596 / 308;">
@@ -180,9 +179,8 @@
         <div class="modal__body">
           <p>
             Use the cue list to jump to any indexed moment, including multiple takes of the same cue in one recording.
-            To mirror the board, enable console follow: Hopper listens for standard ETC EOS outgoing OSC cue events (UDP
-            or TCP). When cue 40 fires on the console, the video seeks to the matching instant from your archival—frame-accurate,
-            not keyframe-guessed.
+            To mirror the board, enable console follow: Hopper listens for cue events from your ETC EOS console. When
+            cue 40 fires, the video seeks to the matching moment from your archival — no manual timecode hunting.
           </p>
           <figure class="modal__shot">
             <div class="modal__shot-frame modal__shot-frame--no-border" style="--shot-ratio: 1280 / 720;">
@@ -208,8 +206,8 @@
         </div>
         <div class="modal__body">
           <p>
-            documentation for multi-channel archivals inclduing PGM, Comms and Timecode. Hopper lets
-            you label, toggle and hide channels and with the <b>auto-level</b> feature you can clearly hear all channels at once.
+            Perfect for multi-channel archivals including PGM, Comms and Timecode. Hopper lets you label, toggle and
+            hide channels, and with the <b>auto-level</b> feature you can clearly hear all channels at once.
           </p>
           <figure class="modal__shot">
             <div class="modal__shot-frame modal__shot-frame--no-border">
@@ -235,7 +233,7 @@
             <div class="step__body">
               <h3>Import your recording</h3>
               <p>
-                Open any video file of your show. Hopper documentations multi-act productions—load an entire run as a
+                Open any video file of your show. Hopper supports multi-act productions — load an entire run as a
                 sequence and it jumps between videos automatically.
               </p>
             </div>
@@ -255,8 +253,8 @@
             <div class="step__body">
               <h3>Connect your console</h3>
               <p>
-                Point your console’s OSC output at Hopper. UDP and TCP are both documentationed. No cue-level programming is
-                required on the console—Hopper listens for standard outgoing cue fire events.
+                Point your ETC EOS console at Hopper — no cue-level programming required on the board. Hopper listens
+                for the cue fire events your console already sends automatically.
               </p>
             </div>
           </li>
