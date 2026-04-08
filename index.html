@@ -388,6 +388,100 @@
     })();
   </script>
 
+  <!-- Waitlist popover -->
+  <div id="waitlist-popover" class="wl-overlay" role="dialog" aria-modal="true" aria-labelledby="wl-title">
+    <div class="wl-backdrop" id="wl-backdrop"></div>
+    <div class="wl-card">
+      <button class="modal__close wl-close" id="wl-close" aria-label="Close popover">
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+      <div class="wl-pouch" aria-hidden="true">🦘</div>
+      <h2 id="wl-title" class="wl-heading">Hopper is not ready to come out of the pouch yet</h2>
+      <p class="wl-body">Enter your email and we will tell you when it's out!</p>
+      <form id="wl-form" class="wl-form" novalidate>
+        <div class="wl-row">
+          <input
+            id="wl-email"
+            class="wl-input"
+            type="email"
+            placeholder="your@email.com"
+            autocomplete="email"
+            required
+          />
+          <button type="submit" class="button button--primary wl-submit">Notify me</button>
+        </div>
+        <p id="wl-msg" class="wl-msg" aria-live="polite" hidden></p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var popover = document.getElementById('waitlist-popover');
+      var backdrop = document.getElementById('wl-backdrop');
+      var closeBtn = document.getElementById('wl-close');
+
+      var form = document.getElementById('wl-form');
+      var emailInput = document.getElementById('wl-email');
+      var msg = document.getElementById('wl-msg');
+      var submitBtn = form.querySelector('.wl-submit');
+
+      function closePopover() {
+        popover.classList.add('wl-overlay--closing');
+        popover.addEventListener('animationend', function handler() {
+          popover.hidden = true;
+          popover.removeEventListener('animationend', handler);
+        });
+      }
+
+      closeBtn.addEventListener('click', closePopover);
+
+      backdrop.addEventListener('click', closePopover);
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !popover.hidden) {
+          closePopover();
+        }
+      });
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var email = emailInput.value.trim();
+        if (!email) return;
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
+        msg.hidden = true;
+
+        fetch('https://hopperplayer-appcast.workers.dev/waitlist', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email })
+        })
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          if (data.ok) {
+            msg.textContent = "You're on the list — we'll email you when Hopper is ready.";
+            msg.className = 'wl-msg wl-msg--success';
+            form.reset();
+            setTimeout(closePopover, 2800);
+          } else {
+            throw new Error(data.error || 'Something went wrong.');
+          }
+        })
+        .catch(function (err) {
+          msg.textContent = err.message || 'Something went wrong — please try again.';
+          msg.className = 'wl-msg wl-msg--error';
+        })
+        .finally(function () {
+          msg.hidden = false;
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Notify me';
+        });
+      });
+    })();
+  </script>
+
   <footer class="site-footer">
     <div class="site-footer__inner">
       <span class="logo logo--small">Hopper</span>

@@ -8,7 +8,38 @@
     <description>Hopper release history.</description>
     <language>en</language>
     
+    
     <item>
+      <title>Version 0.51</title>
+      <pubDate>Wed, 08 Apr 2026 09:37:22 +0000</pubDate>
+      <sparkle:version>4</sparkle:version>
+      <sparkle:shortVersionString>0.51</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[
+<h3>General</h3>
+<ul>
+  <li>Added Share button to Hopper Menu which will show QR code and quick link to send via Email.</li>
+  <li>Ad</li>
+</ul>
+<h3>Playback</h3>
+<ul>
+  <li>Triggering of cues now supports recordings with multiple of the same cue (e.g. rehearsals that run the same scene over and over) and will trigger the nearest instance of that cue.</li>
+  <li>Trigger the lighting console in Trigger mode (menu drop-down next to follow console), this will send a CUE X Fire message when you pass cues in the video. Behaviour set in settings under remote-control.</li>
+  <li>Trigger console mode also stops console playback when you stop the video in playback mode, behaviour set in settings under remote-control</li>
+</ul>
+<h3>Licensing</h3>
+<ul>
+  <li>FIXED: License types only allowed on 1 computer could not activate.</li>
+</ul>
+      ]]></description>
+      <enclosure
+        url="https://hopperplayer.com/releases/Hopper_v0.51.dmg"
+        sparkle:edSignature="j3h2ueHyZK7BxBL6NNBlRyaOiPssrEW3atSNm/LClUsD8E+pxL7AFxmMGLoBV9S1UVDBwsccQwe/svd6qgwuDw=="
+        length="5522590"
+        type="application/x-apple-diskimage"
+      />
+    </item>
+<item>
       <title>Version 0.5</title>
       <pubDate>Tue, 07 Apr 2026 07:37:41 +0000</pubDate>
       <sparkle:version>3</sparkle:version>
