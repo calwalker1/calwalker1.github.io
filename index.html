@@ -453,7 +453,7 @@
         submitBtn.textContent = 'Sending…';
         msg.hidden = true;
 
-        fetch('https://hopperplayer-appcast.workers.dev/waitlist', {
+        fetch('https://hopperplayer-appcast.cal-walker1.workers.dev/waitlist', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email: email })
