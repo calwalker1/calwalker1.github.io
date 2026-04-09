@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Settings — Hopper documentation</title>
+  <meta name="description" content="Reference for all Hopper settings: General, Console, Remote Control, and Playback." />
+  <link rel="icon" href="../assets/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="documentation.css" />
+</head>
+<body class="documentation-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="logo" href="../index.html">
+        <img class="logo__mark" src="../assets/Header.png" alt="" width="849" height="547" decoding="async" />
+        Hopper
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="../index.html#features">Features</a>
+        <a href="../index.html#how">How it works</a>
+        <a href="../index.html#pricing">Pricing</a>
+        <a href="index.html" aria-current="page">documentation</a>
+        <a class="nav__cta" href="../index.html#download">Download</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="documentation-layout">
+    <aside class="documentation-sidebar" aria-label="documentation navigation">
+      <h2 class="documentation-sidebar__title">documentation</h2>
+      <nav class="documentation-nav" aria-label="documentation topics">
+        <a href="index.html">Overview</a>
+        <a href="about.html">About Hopper</a>
+        <a href="creating-project.html">Creating a project</a>
+        <a href="settings.html" aria-current="page">Settings</a>
+        <a href="audio.html">Audio</a>
+        <a href="triggering-console.html">Triggering the console</a>
+      </nav>
+      <p class="documentation-nav__subsection">On this page</p>
+      <nav class="documentation-nav documentation-nav--sections" aria-label="Sections">
+        <a href="#general">General</a>
+        <a href="#console">Console</a>
+        <a href="#remote-control">Remote Control</a>
+        <a href="#playback">Playback</a>
+      </nav>
+    </aside>
+
+    <div class="documentation-main">
+      <article>
+        <h1>Settings</h1>
+        <p class="documentation-lead">
+          Open Settings from the <strong>Hopper</strong> menu (or <kbd>⌘,</kbd>). There are four tabs: General, Console,
+          Remote Control, and Playback.
+        </p>
+
+        <section id="general" aria-labelledby="h-general">
+          <h2 id="h-general">General</h2>
+          <p>
+            <strong>Appearance.</strong> Choose between System (follows macOS), Light, or Dark. Hopper always switches to
+            Dark when entering fullscreen regardless of this setting, so the interface does not compete with the video.
+          </p>
+        </section>
+
+        <section id="console" aria-labelledby="h-console">
+          <h2 id="h-console">Console</h2>
+          <p>These settings control how Hopper listens for incoming OSC messages from your lighting console.</p>
+
+          <p>
+            <strong>Console type.</strong> Select the brand of console you are working with. Currently ETC EOS, grandMA3,
+            and a generic Other mode are supported. The console type changes which OSC address patterns Hopper expects and
+            whether the Trigger Console feature is available.
+          </p>
+          <p>
+            <strong>Transport (ETC EOS only).</strong> Choose <strong>UDP</strong> or <strong>TCP</strong>. UDP is the
+            simpler option — the console broadcasts to a port and Hopper listens. TCP has Hopper connect outbound to your
+            EOS console's IP address; the connection is more reliable and is ETC's recommended approach for production.
+            EOS TCP port is typically 3032 (OSC 1.0) or 3037 (OSC 1.1); Hopper auto-detects the framing.
+          </p>
+          <p>
+            <strong>EOS IP Address (TCP only).</strong> The IP address of your EOS console on the local network.
+            Hopper includes an auto-discovery tool — click <strong>Discover</strong> to scan and fill this in
+            automatically if your console is on the same subnet.
+          </p>
+          <p>
+            <strong>Port.</strong> The UDP or TCP port Hopper listens on (default <code>8000</code> for UDP).
+            Must match what your console is configured to send to.
+          </p>
+          <p>
+            <strong>Cue list (ETC EOS UDP only).</strong> Filters incoming cue fire messages to a specific EOS cue list
+            number. Leave blank to accept messages from all lists. Most shows use list <code>1</code>.
+          </p>
+          <p>
+            <strong>Address Pattern (grandMA3 / Other).</strong> A regular expression with one capture group that
+            Hopper uses to extract the cue number from incoming OSC addresses. Use the OSC Monitor
+            (<strong>⌘⇧M</strong>) to observe live messages and work out the pattern for your console.
+          </p>
+          <p>
+            After changing connection settings, click <strong>Restart OSC Listener</strong> (UDP) or
+            <strong>Test Connection</strong> (TCP) to apply.
+          </p>
+        </section>
+
+        <section id="remote-control" aria-labelledby="h-remote-control">
+          <h2 id="h-remote-control">Remote Control</h2>
+          <p>
+            The Remote Control tab has two sections: <strong>Trigger Console</strong> and <strong>Macro Triggers</strong>.
+            For a full walkthrough of using these features see
+            <a href="triggering-console.html">Triggering the console</a>.
+          </p>
+
+          <p>
+            <strong>Trigger Console.</strong> Configures Hopper to send OSC fire messages back to your EOS console as the
+            video plays, keeping the console in sync with the recording. Currently only supported with ETC EOS.
+          </p>
+          <ul>
+            <li>
+              <strong>Console IP / Console port (UDP only).</strong> The destination address for outbound trigger messages.
+              Not needed when using TCP — Hopper reuses the existing inbound connection.
+            </li>
+            <li>
+              <strong>Start cue trigger.</strong> OSC address template sent when a new cue is reached during playback.
+              <code>{cue}</code> is replaced with the cue number at runtime.
+              ETC EOS default: <code>/eos/cue/1/{cue}/fire</code>.
+            </li>
+            <li>
+              <strong>Stop trigger.</strong> OSC address sent when playback stops. Leave blank to disable.
+              ETC EOS default: <code>/eos/cues/stop</code>.
+            </li>
+            <li>
+              <strong>Re-send cue fire on resume.</strong> When enabled, resuming playback immediately fires the last cue
+              at the current playhead position. Useful for re-syncing the console state after a pause or a manual seek.
+            </li>
+          </ul>
+
+          <p>
+            <strong>Macro Triggers.</strong> Hopper can listen for EOS macro fire messages and map them to actions
+            (play, stop, playback toggle, follow on/off). Enter the EOS macro number for each action; leave blank to
+            disable. No console-side programming is required beyond creating a blank macro — just fire it from a button
+            or the command line.
+          </p>
+        </section>
+
+        <section id="playback" aria-labelledby="h-playback">
+          <h2 id="h-playback">Playback</h2>
+          <p>
+            <strong>Pre-roll.</strong> When the video is already playing and Hopper jumps to a cue (via OSC fire or
+            manual navigation), it can seek to a point slightly before the cue time so the console operator sees the
+            video approaching the cue naturally. Two independent pre-roll values are available:
+          </p>
+          <ul>
+            <li><strong>Console (OSC)</strong> — applied when a cue jump is triggered by an incoming OSC fire message.</li>
+            <li><strong>Manual (cue list / keyboard)</strong> — applied when you navigate via the cue list or keyboard shortcuts.</li>
+          </ul>
+          <p>
+            Pre-roll is only applied while the video is playing. If paused, cue jumps always go to the exact cue time.
+            The maximum pre-roll value is 10 seconds.
+          </p>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <span class="logo logo--small">Hopper</span>
+      <p class="site-footer__meta"><a href="../index.html">Home</a> · <a href="index.html">documentation</a></p>
+      <p class="site-footer__legal">
+        © <time datetime="2026">2026</time> Calibrated Productions Pty. Ltd.
+        <span class="site-footer__sep" aria-hidden="true">·</span>
+        <a href="../terms.html">Terms of service</a>
+        <span class="site-footer__sep" aria-hidden="true">·</span>
+        <a href="../privacy.html">Privacy Policy</a>
+        <span class="site-footer__sep" aria-hidden="true">·</span>
+        <a href="../refund.html">Refund Policy</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

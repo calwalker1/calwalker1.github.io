@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Audio — Hopper documentation</title>
+  <meta name="description" content="Multitrack audio playback in Hopper: channel controls, mute, solo, auto-level, and track labels." />
+  <link rel="icon" href="../assets/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="documentation.css" />
+</head>
+<body class="documentation-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="logo" href="../index.html">
+        <img class="logo__mark" src="../assets/Header.png" alt="" width="849" height="547" decoding="async" />
+        Hopper
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="../index.html#features">Features</a>
+        <a href="../index.html#how">How it works</a>
+        <a href="../index.html#pricing">Pricing</a>
+        <a href="index.html" aria-current="page">documentation</a>
+        <a class="nav__cta" href="../index.html#download">Download</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="documentation-layout">
+    <aside class="documentation-sidebar" aria-label="documentation navigation">
+      <h2 class="documentation-sidebar__title">documentation</h2>
+      <nav class="documentation-nav" aria-label="documentation topics">
+        <a href="index.html">Overview</a>
+        <a href="about.html">About Hopper</a>
+        <a href="creating-project.html">Creating a project</a>
+        <a href="settings.html">Settings</a>
+        <a href="audio.html" aria-current="page">Audio</a>
+        <a href="triggering-console.html">Triggering the console</a>
+      </nav>
+      <p class="documentation-nav__subsection">On this page</p>
+      <nav class="documentation-nav documentation-nav--sections" aria-label="Sections">
+        <a href="#overview">Overview</a>
+        <a href="#channel-controls">Channel controls</a>
+        <a href="#auto-level">Auto-level</a>
+        <a href="#labels">Track labels</a>
+      </nav>
+    </aside>
+
+    <div class="documentation-main">
+      <article>
+        <h1>Audio</h1>
+        <p class="documentation-lead">
+          Hopper supports multitrack and multichannel audio playback with per-channel mute, solo, and level controls —
+          useful for recordings that have separate stems for band, vocals, effects, or other elements.
+        </p>
+
+        <section id="overview" aria-labelledby="h-overview">
+          <h2 id="h-overview">Overview</h2>
+          <p>
+            When you load a video, Hopper inspects its audio tracks. Two layouts are handled:
+          </p>
+          <ul>
+            <li>
+              <strong>Single track, multiple channels</strong> — a common stereo or multichannel mix embedded in one
+              audio track. Hopper exposes each channel (left, right, centre, etc.) individually.
+            </li>
+            <li>
+              <strong>Multiple tracks</strong> — separate audio tracks in the container (for example a Pro Tools export
+              with isolated stems). Each track appears as its own entry in the Audio panel.
+            </li>
+          </ul>
+          <p>
+            Open the Audio panel from the <strong>Audio</strong> menu or the speaker icon in the toolbar. If the
+            file has only a single mono or stereo channel there are no additional controls to expose and the panel
+            is not shown.
+          </p>
+        </section>
+
+        <section id="channel-controls" aria-labelledby="h-channel-controls">
+          <h2 id="h-channel-controls">Channel controls</h2>
+          <p>Each channel or track has three controls:</p>
+          <ul>
+            <li>
+              <strong>Mute (M).</strong> Silences the channel. Muted channels still appear in the level meters so you
+              can confirm signal is present even while silenced.
+            </li>
+            <li>
+              <strong>Solo (S).</strong> Routes only this channel to the output. If more than one channel is soloed,
+              all soloed channels play together. Soloing a single channel copies it to both left and right outputs so it
+              is audible through a stereo system regardless of its original position.
+            </li>
+            <li>
+              <strong>Hide.</strong> Removes the channel from the active mix entirely. Unlike mute, a hidden channel
+              is excluded from auto-level calculations. Use this for channels that carry time code, click, or other
+              non-audio content you never want to hear.
+            </li>
+          </ul>
+          <p>
+            Level meters next to each channel update in real time during playback so you can identify which tracks
+            carry useful signal.
+          </p>
+        </section>
+
+        <section id="auto-level" aria-labelledby="h-auto-level">
+          <h2 id="h-auto-level">Auto-level</h2>
+          <p>
+            Enable <strong>Auto-level</strong> from the Audio menu to have Hopper continuously measure each channel's
+            loudness and apply a compensating gain so all active channels sit at a similar level. This is useful when
+            a multitrack recording has very different levels across stems — for example a room mic that is much quieter
+            than an audience or direct feed.
+          </p>
+          <p>
+            Auto-level uses a slow-moving average (roughly three seconds) so it reacts to sustained loudness differences
+            rather than momentary peaks. Gains are frozen while the video is paused. The range is capped at −24 dB to
+            +15 dB per channel to prevent extreme boosts on near-silent tracks.
+          </p>
+          <p>
+            Auto-level is best used as a monitoring convenience, not a mastering tool. It applies only to Hopper's
+            output; the source file is unchanged.
+          </p>
+        </section>
+
+        <section id="labels" aria-labelledby="h-labels">
+          <h2 id="h-labels">Track labels</h2>
+          <p>
+            Channels are named automatically (<em>Channel 1</em>, <em>Channel 2</em>, etc.) unless the file embeds
+            track names — which most NLEs do not export. You can rename any channel directly in the Audio panel: click
+            the label and type a new name (for example <em>Band L</em>, <em>Band R</em>, <em>Vox</em>).
+          </p>
+          <p>
+            Labels are saved to the <code>.hopper</code> sidecar file alongside the rest of the project data, so your
+            names persist across sessions and can be shared with collaborators who open the same sidecar.
+          </p>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <span class="logo logo--small">Hopper</span>
+      <p class="site-footer__meta"><a href="../index.html">Home</a> · <a href="index.html">documentation</a></p>
+      <p class="site-footer__legal">
+        © <time datetime="2026">2026</time> Calibrated Productions Pty. Ltd.
+        <span class="site-footer__sep" aria-hidden="true">·</span>
+        <a href="../terms.html">Terms of service</a>
+        <span class="site-footer__sep" aria-hidden="true">·</span>
+        <a href="../privacy.html">Privacy Policy</a>
+        <span class="site-footer__sep" aria-hidden="true">·</span>
+        <a href="../refund.html">Refund Policy</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

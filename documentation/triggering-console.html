@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Triggering the console — Hopper documentation</title>
+  <meta name="description" content="Use Hopper to drive your ETC EOS console via OSC — Trigger Console mode, cue fire addresses, stop triggers, and macro control." />
+  <link rel="icon" href="../assets/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="documentation.css" />
+</head>
+<body class="documentation-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="logo" href="../index.html">
+        <img class="logo__mark" src="../assets/Header.png" alt="" width="849" height="547" decoding="async" />
+        Hopper
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="../index.html#features">Features</a>
+        <a href="../index.html#how">How it works</a>
+        <a href="../index.html#pricing">Pricing</a>
+        <a href="index.html" aria-current="page">documentation</a>
+        <a class="nav__cta" href="../index.html#download">Download</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="documentation-layout">
+    <aside class="documentation-sidebar" aria-label="documentation navigation">
+      <h2 class="documentation-sidebar__title">documentation</h2>
+      <nav class="documentation-nav" aria-label="documentation topics">
+        <a href="index.html">Overview</a>
+        <a href="about.html">About Hopper</a>
+        <a href="creating-project.html">Creating a project</a>
+        <a href="settings.html">Settings</a>
+        <a href="audio.html">Audio</a>
+        <a href="triggering-console.html" aria-current="page">Triggering the console</a>
+      </nav>
+      <p class="documentation-nav__subsection">On this page</p>
+      <nav class="documentation-nav documentation-nav--sections" aria-label="Sections">
+        <a href="#modes">Console modes</a>
+        <a href="#setup">Setup</a>
+        <a href="#cue-fire">Cue fire messages</a>
+        <a href="#stop-trigger">Stop trigger</a>
+        <a href="#resend-on-resume">Re-send on resume</a>
+        <a href="#macro-triggers">Macro triggers</a>
+      </nav>
+    </aside>
+
+    <div class="documentation-main">
+      <article>
+        <h1>Triggering the console</h1>
+        <p class="documentation-lead">
+          As well as following your ETC EOS console, Hopper can work in the opposite direction — sending OSC cue fire
+          messages to the console as the video plays, keeping the lighting state in sync with the recording.
+          This is currently supported with ETC EOS only.
+        </p>
+
+        <section id="modes" aria-labelledby="h-modes">
+          <h2 id="h-modes">Console modes</h2>
+          <p>
+            The toggle button in the main Hopper window switches between two console modes:
+          </p>
+          <ul>
+            <li>
+              <strong>Follow Console.</strong> The default. Hopper listens for incoming OSC cue fire messages from the
+              console and jumps the video to the corresponding timestamp. The console operator drives the video.
+            </li>
+            <li>
+              <strong>Trigger Console.</strong> Hopper drives the console. As the video plays and the playhead crosses
+              each cue's start time, Hopper sends an OSC fire message to EOS. The video operator drives the console.
+            </li>
+          </ul>
+          <p>
+            The two modes are mutually exclusive. Hopper remembers your last active mode and restores it on launch.
+          </p>
+        </section>
+
+        <section id="setup" aria-labelledby="h-setup">
+          <h2 id="h-setup">Setup</h2>
+          <p>
+            To send triggers to EOS you need to tell Hopper where to reach the console:
+          </p>
+          <ul>
+            <li>
+              <strong>TCP (recommended).</strong> If you have already set up a TCP connection in the Console settings tab,
+              Hopper reuses that same connection for outbound triggers — no extra network configuration is needed.
+              Switch the transport to TCP, enter your EOS IP, and connect.
+            </li>
+            <li>
+              <strong>UDP.</strong> Open <strong>Settings → Remote Control</strong> and enter the <strong>Console IP</strong>
+              and <strong>Console port</strong> (EOS default is <code>3032</code>). These are the address Hopper sends
+              outbound UDP packets to, separate from the port Hopper itself listens on for incoming messages.
+            </li>
+          </ul>
+          <p>
+            On the EOS console, ensure <strong>OSC RX</strong> (receive) is enabled so it will accept incoming fire
+            commands from Hopper.
+          </p>
+        </section>
+
+        <section id="cue-fire" aria-labelledby="h-cue-fire">
+          <h2 id="h-cue-fire">Cue fire messages</h2>
+          <p>
+            The <strong>Start cue trigger</strong> field in Settings → Remote Control defines the OSC address template
+            sent each time a new cue is reached. The token <code>{cue}</code> is replaced with the cue number at runtime.
+          </p>
+          <p>The ETC EOS default:</p>
+          <pre><code>/eos/cue/1/{cue}/fire</code></pre>
+          <p>
+            For example, when the playhead reaches cue 40, Hopper sends:
+          </p>
+          <pre><code>/eos/cue/1/40/fire</code></pre>
+          <p>
+            Hopper only sends a message when the cue number <em>changes</em> — it does not fire repeatedly for the same
+            cue while the video plays through it. If you need to target a different cue list, change the <code>1</code>
+            in the template to the appropriate list number.
+          </p>
+          <p>
+            Cue numbers are matched as strings, so fractional EOS cues such as <code>40.5</code> are sent and received
+            exactly as-is.
+          </p>
+        </section>
+
+        <section id="stop-trigger" aria-labelledby="h-stop-trigger">
+          <h2 id="h-stop-trigger">Stop trigger</h2>
+          <p>
+            The <strong>Stop trigger</strong> field specifies an OSC address to send when Hopper's playback stops — for
+            example when you press pause or the video reaches its end. This is useful for cueing the console to hold
+            state or stop a running sequence.
+          </p>
+          <p>The ETC EOS default:</p>
+          <pre><code>/eos/cues/stop</code></pre>
+          <p>Leave the field blank to disable the stop trigger entirely.</p>
+        </section>
+
+        <section id="resend-on-resume" aria-labelledby="h-resend-on-resume">
+          <h2 id="h-resend-on-resume">Re-send cue fire on resume</h2>
+          <p>
+            When you pause and then resume playback, the console may have moved on — for example, an operator stepped
+            through cues manually during the break. Enable <strong>Re-send cue fire on resume</strong> in
+            Settings → Remote Control to have Hopper immediately fire the last cue at the current playhead position
+            as soon as playback resumes, snapping the console back in sync before the next cue arrives.
+          </p>
+          <p>
+            This fires exactly once per resume event, using the same cue fire template as normal playback. It does not
+            interfere with the stop trigger and does not cause a double-fire when the video continues past the same cue.
+          </p>
+        </section>
+
+        <section id="macro-triggers" aria-labelledby="h-macro-triggers">
+          <h2 id="h-macro-triggers">Macro triggers</h2>
+          <p>
+            Hopper can listen to EOS macro fire messages and map them to playback actions, allowing a lighting operator
+            to control Hopper from the console without touching the Mac. Available actions:
+          </p>
+          <ul>
+            <li><strong>Play</strong> — start playback.</li>
+            <li><strong>Stop</strong> — pause playback.</li>
+            <li><strong>Playback toggle</strong> — play if paused, pause if playing.</li>
+            <li><strong>Follow on</strong> — switch to Follow Console mode.</li>
+            <li><strong>Follow off</strong> — switch to Trigger Console mode.</li>
+          </ul>
+          <p>
+            In Settings → Remote Control → Macro Triggers, enter the EOS macro number for each action you want to use.
+            No console-side programming is needed beyond creating a blank macro — Hopper sees the macro fire message
+            and acts on it. Leave a field blank to leave that action unbound.
+          </p>
+          <p>
+            Macro triggers work in both Follow Console and Trigger Console modes. They are a convenient way to hand
+            transport control to the board op so the video operator can focus on the screen.
+          </p>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <span class="logo logo--small">Hopper</span>
+      <p class="site-footer__meta"><a href="../index.html">Home</a> · <a href="index.html">documentation</a></p>
+      <p class="site-footer__legal">
+        © <time datetime="2026">2026</time> Calibrated Productions Pty. Ltd.
+        <span class="site-footer__sep" aria-hidden="true">·</span>
+        <a href="../terms.html">Terms of service</a>
+        <span class="site-footer__sep" aria-hidden="true">·</span>
+        <a href="../privacy.html">Privacy Policy</a>
+        <span class="site-footer__sep" aria-hidden="true">·</span>
+        <a href="../refund.html">Refund Policy</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

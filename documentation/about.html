@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About Hopper — documentation</title>
-  <meta name="description" content="Licensing, project structure, Hopper sidecar files, and documentationed video formats." />
+  <meta name="description" content="Licensing, project structure, Hopper sidecar files, and supported video formats." />
   <link rel="icon" href="../assets/favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png" />
@@ -40,14 +40,17 @@
       <nav class="documentation-nav" aria-label="documentation topics">
         <a href="index.html">Overview</a>
         <a href="about.html" aria-current="page">About Hopper</a>
-        <a href="creating-project.html">Creating a project and loading your first video</a>
+        <a href="creating-project.html">Creating a project</a>
+        <a href="settings.html">Settings</a>
+        <a href="audio.html">Audio</a>
+        <a href="triggering-console.html">Triggering the console</a>
       </nav>
       <p class="documentation-nav__subsection">On this page</p>
       <nav class="documentation-nav documentation-nav--sections" aria-label="About Hopper sections">
         <a href="#licensing">Licensing</a>
         <a href="#project-structure">Project structure</a>
         <a href="#hopper-file">Hopper file</a>
-        <a href="#documentationed-formats">documentationed formats</a>
+        <a href="#supported-formats">Supported formats</a>
       </nav>
     </aside>
 
@@ -105,18 +108,18 @@
           </p>
         </section>
 
-        <section id="documentationed-formats" aria-labelledby="h-documentationed-formats">
-          <h2 id="h-documentationed-formats">documentationed formats</h2>
+        <section id="supported-formats" aria-labelledby="h-supported-formats">
+          <h2 id="h-supported-formats">Supported formats</h2>
           <p>
             Hopper uses Apple’s AVFoundation for playback. In practice that means common container formats such as
-            <strong>MOV</strong> and <strong>MP4</strong> with widely used video codecs (for example H.264 / AVC, HEVC when
-            documentationed by your Mac) work reliably. ProRes and other professional codecs are often documentationed when macOS can
-            decode them.
+            <strong>MOV</strong> and <strong>MP4</strong> with widely used video codecs (for example H.264 / AVC, HEVC
+            when supported by your Mac) work reliably. ProRes and other professional codecs are often supported when
+            macOS can decode them.
           </p>
           <p>
             If a file does not open or plays without audio/video, re-export from your NLE or transcode to a standard
-            MP4/MOV profile and try again. Multichannel or multi-track audio is documentationed for selection in the app where
-            the file exposes multiple audio tracks.
+            MP4/MOV profile and try again. Multichannel and multi-track audio is supported — see
+            <a href="audio.html">Audio</a> for details on per-channel controls.
           </p>
         </section>
       </article>
