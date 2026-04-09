@@ -58,35 +58,29 @@
       <article>
         <h1>Audio</h1>
         <p class="documentation-lead">
-          Hopper supports multitrack and multichannel audio playback with per-channel mute, solo, and level controls —
-          useful for recordings that have separate stems for band, vocals, effects, or other elements.
+          Hopper supports multichannel audio playback with per-channel mute, solo, and level controls —
+          useful for recordings that have separate audio tracks such as PGM, Comms, and Timecode.
         </p>
 
-        <section id="overview" aria-labelledby="h-overview">
+        <section id="overview" aria-labelledby="h-overview" style="margin-bottom:10px;">
           <h2 id="h-overview">Overview</h2>
           <p>
-            When you load a video, Hopper inspects its audio tracks. Two layouts are handled:
-          </p>
-          <ul>
-            <li>
-              <strong>Single track, multiple channels</strong> — a common stereo or multichannel mix embedded in one
-              audio track. Hopper exposes each channel (left, right, centre, etc.) individually.
-            </li>
-            <li>
-              <strong>Multiple tracks</strong> — separate audio tracks in the container (for example a Pro Tools export
-              with isolated stems). Each track appears as its own entry in the Audio panel.
-            </li>
-          </ul>
-          <p>
-            Open the Audio panel from the <strong>Audio</strong> menu or the speaker icon in the toolbar. If the
-            file has only a single mono or stereo channel there are no additional controls to expose and the panel
-            is not shown.
+            When you load a video, Hopper inspects its audio and exposes each channel individually in the Audio panel.
+            Open it from the <strong>Audio</strong> menu or the speaker icon in the toolbar. If the file has only a
+            single mono or stereo channel there are no additional controls to expose and the panel is not shown.
           </p>
         </section>
 
+        <img
+          src="../assets/support-audio-main.png"
+          alt="Hopper audio panel showing per-channel mute, solo, and level controls"
+          width="1352" height="1324"
+          style="display:block;width:55%;height:auto;margin:0 auto 2.75rem;box-shadow:0 0 0 5% rgba(0,0,0,0.08);"
+        />
+
         <section id="channel-controls" aria-labelledby="h-channel-controls">
           <h2 id="h-channel-controls">Channel controls</h2>
-          <p>Each channel or track has three controls:</p>
+          <p>Each channel has three controls:</p>
           <ul>
             <li>
               <strong>Mute (M).</strong> Silences the channel. Muted channels still appear in the level meters so you
@@ -104,7 +98,7 @@
             </li>
           </ul>
           <p>
-            Level meters next to each channel update in real time during playback so you can identify which tracks
+            Level meters next to each channel update in real time during playback so you can identify which channels
             carry useful signal.
           </p>
         </section>
@@ -114,8 +108,8 @@
           <p>
             Enable <strong>Auto-level</strong> from the Audio menu to have Hopper continuously measure each channel's
             loudness and apply a compensating gain so all active channels sit at a similar level. This is useful when
-            a multitrack recording has very different levels across stems — for example a room mic that is much quieter
-            than an audience or direct feed.
+            a recording has very different levels across audio tracks — for example a PGM feed that is much louder
+            than a Comms or effects channel.
           </p>
           <p>
             Auto-level uses a slow-moving average (roughly three seconds) so it reacts to sustained loudness differences
@@ -132,8 +126,8 @@
           <h2 id="h-labels">Track labels</h2>
           <p>
             Channels are named automatically (<em>Channel 1</em>, <em>Channel 2</em>, etc.) unless the file embeds
-            track names — which most NLEs do not export. You can rename any channel directly in the Audio panel: click
-            the label and type a new name (for example <em>Band L</em>, <em>Band R</em>, <em>Vox</em>).
+            track names — which most recorders do not export. You can rename any channel directly in the Audio panel:
+            click the label and type a new name (for example <em>PGM</em>, <em>Comms</em>, <em>Timecode</em>).
           </p>
           <p>
             Labels are saved to the <code>.hopper</code> sidecar file alongside the rest of the project data, so your
