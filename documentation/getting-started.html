@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Getting started — Hopper Documentation</title>
+  <meta name="description" content="Open a video, draw a cue region, and run your first analysis in Hopper." />
+  <link rel="icon" href="../assets/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="documentation.css" />
+</head>
+<body class="documentation-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="logo" href="../index.html">
+        <img class="logo__mark" src="../assets/Header.png" alt="" width="849" height="547" decoding="async" />
+        Hopper
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="../index.html#features">Features</a>
+        <a href="../index.html#how">How it works</a>
+        <a href="../index.html#pricing">Pricing</a>
+        <a href="index.html">Documentation</a>
+        <a class="nav__cta" href="../index.html#download">Download</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="documentation-layout">
+    <aside class="documentation-sidebar" aria-label="documentation navigation">
+      <h2 class="documentation-sidebar__title">documentation</h2>
+      <nav class="documentation-nav" aria-label="documentation topics">
+        <a href="index.html">Overview</a>
+        <a href="getting-started.html" aria-current="page">Getting started</a>
+        <a href="about.html">About Hopper</a>
+        <a href="creating-project.html">Creating a project</a>
+        <a href="settings.html">Settings</a>
+        <a href="audio.html">Audio</a>
+        <a href="triggering-console.html">Triggering the console</a>
+      </nav>
+      <p class="documentation-nav__subsection">On this page</p>
+      <nav class="documentation-nav documentation-nav--sections" aria-label="Sections">
+        <a href="#open-video">Open a video</a>
+        <a href="#draw-region">Draw a cue region</a>
+        <a href="#run-analysis">Run analysis</a>
+        <a href="#next-steps">Next steps</a>
+      </nav>
+    </aside>
+
+    <div class="documentation-main">
+      <article>
+        <h1>Getting started</h1>
+        <p class="documentation-lead">
+          This guide walks you through the core Hopper workflow: opening a single archival video, drawing a region
+          around the burnt-in cue display, and running your first analysis to build the cue map.
+        </p>
+
+        <figure class="documentation-video-placeholder" aria-label="Video coming soon">
+          <div class="documentation-video-placeholder__frame">
+            <i class="fa-solid fa-circle-play documentation-video-placeholder__icon" aria-hidden="true"></i>
+            <p class="documentation-video-placeholder__label">Video coming soon</p>
+          </div>
+        </figure>
+
+        <section id="open-video" aria-labelledby="h-open-video">
+          <h2 id="h-open-video">Open a video</h2>
+          <p>
+            Launch Hopper from your Applications folder. From the welcome screen, click <strong>New Project</strong>
+            and use the file picker to select your archival video file. Hopper supports the video formats macOS can
+            play natively — MP4, MOV, and MXF files all work well.
+          </p>
+          <p>
+            Once the video is loaded you will see it appear in the playback window. Take a moment to scrub through
+            the recording and confirm the cue number display is visible in the frame — you will need to be able
+            to see it clearly to draw an accurate detection region.
+          </p>
+        </section>
+
+        <section id="draw-region" aria-labelledby="h-draw-region">
+          <h2 id="h-draw-region">Draw a cue region</h2>
+          <p>
+            Hopper reads cue numbers directly from the video using on-device OCR. To tell it where to look,
+            you need to draw a rectangle over the part of the frame where the cue number is displayed.
+          </p>
+          <ol>
+            <li>Pause playback on a frame where a cue number is clearly visible.</li>
+            <li>Click the <strong>Draw Region</strong> button (or select it from the menu). The cursor changes to a crosshair.</li>
+            <li>Click and drag to draw a box tightly around the cue number display. The box should contain the
+              number but as little surrounding content as possible — a tight crop gives the OCR engine the
+              best chance of reading it accurately.</li>
+            <li>Release the mouse to confirm the selection.</li>
+          </ol>
+          <p>
+            The region is stored as fractional coordinates relative to the video frame, so it will work correctly
+            even if you open the same video at a different resolution later.
+          </p>
+        </section>
+
+        <section id="run-analysis" aria-labelledby="h-run-analysis">
+          <h2 id="h-run-analysis">Run analysis</h2>
+          <p>
+            With a region drawn, click <strong>Analyse Video</strong>. Hopper scans the recording frame by frame
+            within the selected region, detects every cue number transition, and records the exact timestamp
+            each cue first appeared.
+          </p>
+          <p>
+            Analysis runs entirely on your Mac — no internet connection is needed. Progress is shown in a HUD
+            overlay; on a typical show recording (60–90 minutes) this usually completes in a few minutes.
+          </p>
+          <p>
+            When complete, the results are saved in a small <code>.hopper</code> sidecar file placed alongside
+            your video. On subsequent opens, Hopper loads the sidecar automatically so you will not need to
+            re-analyse unless the video or cue region changes.
+          </p>
+        </section>
+
+        <section id="next-steps" aria-labelledby="h-next-steps">
+          <h2 id="h-next-steps">Next steps</h2>
+          <p>
+            Once analysis is complete, the cue list will populate in the sidebar. From here you can:
+          </p>
+          <ul>
+            <li>Click any cue to jump the video to that moment.</li>
+            <li>Connect an ETC EOS console and enable <strong>Console Follow</strong> so Hopper seeks
+              automatically when a cue fires on the board — see
+              <a href="triggering-console.html">Triggering the console</a>.</li>
+            <li>Configure OSC settings and remote control in <a href="settings.html">Settings</a>.</li>
+          </ul>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <span class="logo logo--small">Hopper</span>
+      <p class="site-footer__meta"><a href="../index.html">Home</a> · <a href="index.html">documentation</a></p>
+      <p class="site-footer__legal">
+        © <time datetime="2026">2026</time> Calibrated Productions Pty. Ltd.
+        <span class="site-footer__sep" aria-hidden="true">·</span>
+        <a href="../terms.html">Terms of service</a>
+        <span class="site-footer__sep" aria-hidden="true">·</span>
+        <a href="../privacy.html">Privacy Policy</a>
+        <span class="site-footer__sep" aria-hidden="true">·</span>
+        <a href="../refund.html">Refund Policy</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

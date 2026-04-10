@@ -172,6 +172,38 @@
   color: var(--text-muted);
 }
 
+/* Video placeholder */
+
+.documentation-video-placeholder {
+  margin: 0 0 2.5rem;
+}
+
+.documentation-video-placeholder__frame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  aspect-ratio: 16 / 9;
+  max-width: 52rem;
+  border-radius: var(--radius);
+  border: 2px dashed var(--border);
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+}
+
+.documentation-video-placeholder__icon {
+  font-size: 2.5rem;
+  opacity: 0.35;
+}
+
+.documentation-video-placeholder__label {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
 @media (max-width: 900px) {
   .documentation-layout {
     grid-template-columns: 1fr;
