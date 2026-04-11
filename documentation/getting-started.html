@@ -63,12 +63,44 @@
           around the burnt-in cue display, and running your first analysis to build the cue map.
         </p>
 
-        <figure class="documentation-video-placeholder" aria-label="Video coming soon">
-          <div class="documentation-video-placeholder__frame">
-            <i class="fa-solid fa-circle-play documentation-video-placeholder__icon" aria-hidden="true"></i>
-            <p class="documentation-video-placeholder__label">Video coming soon</p>
+        <figure class="documentation-video">
+          <div class="documentation-video__frame" id="gs-video-frame">
+            <video
+              id="gs-video"
+              controls
+              preload="metadata"
+              style="width:100%;height:100%;display:block;border-radius:inherit;"
+            >
+              <source src="../assets/Hopper-training-video.mp4" type="video/mp4" />
+            </video>
           </div>
+          <figcaption class="documentation-video__caption">
+            <a href="https://youtu.be/FiSDkkE1gkg" target="_blank" rel="noopener">Watch on YouTube</a>
+          </figcaption>
         </figure>
+
+        <script>
+          (function () {
+            var frame  = document.getElementById('gs-video-frame');
+            var video  = document.getElementById('gs-video');
+            var source = video && video.querySelector('source');
+            if (!frame || !video) return;
+
+            function showYouTube() {
+              var iframe = document.createElement('iframe');
+              iframe.src              = 'https://www.youtube.com/embed/FiSDkkE1gkg?si=PJT7bLKkf-2pJQvz';
+              iframe.title            = 'Hopper — Getting started';
+              iframe.allow            = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+              iframe.referrerPolicy   = 'strict-origin-when-cross-origin';
+              iframe.allowFullscreen  = true;
+              iframe.style.cssText    = 'width:100%;height:100%;border:0;border-radius:inherit;';
+              frame.replaceChildren(iframe);
+            }
+
+            if (source) source.addEventListener('error', showYouTube);
+            video.addEventListener('error', showYouTube);
+          })();
+        </script>
 
         <section id="open-video" aria-labelledby="h-open-video">
           <h2 id="h-open-video">Open a video</h2>
