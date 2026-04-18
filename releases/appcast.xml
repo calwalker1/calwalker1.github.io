@@ -9,7 +9,38 @@
     <language>en</language>
     
     
+    
     <item>
+      <title>Version 0.52</title>
+      <pubDate>Sat, 18 Apr 2026 09:11:04 +0000</pubDate>
+      <sparkle:version>4</sparkle:version>
+      <sparkle:shortVersionString>0.52</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[
+<h3>General</h3>
+<ul>
+  <li>Hopper now generates a small thumbnail into the Hopper file and shows video thumbnails in the recent list where possible.</li>
+  <li>You can relaunch the onboarding window from the preferences window</li>
+  <li>General improvements with show management/ file ordering in sidebar.</li>
+</ul>
+<h3>Playback</h3>
+<ul>
+  <li>Added toggle in Console control settings under Trigger Console. Re-send fire command on playback resume. Will send the relevant cue each time playback is resumed.</li>
+  <li>General show playback fixes including faster switching between videos, bug fixes with renaming videos.</li>
+</ul>
+<h3>Licensing</h3>
+<ul>
+  <li>FIXED: Hopper clients which cannot phone home will remain active until the license expiry date instead of locking up after 7 days.</li>
+</ul>
+      ]]></description>
+      <enclosure
+        url="https://hopperplayer.com/releases/Hopper_v0.52.dmg"
+        sparkle:edSignature="/rIMggIf6i1Qak55MnQTNT6z+sR+GcFLr8aK9A/QnRhm/DSaEqzFKskpddXqynMIkZpJTf7v/4WmdwBBGBEKDA=="
+        length="5681671"
+        type="application/x-apple-diskimage"
+      />
+    </item>
+<item>
       <title>Version 0.51</title>
       <pubDate>Wed, 08 Apr 2026 09:37:22 +0000</pubDate>
       <sparkle:version>4</sparkle:version>
