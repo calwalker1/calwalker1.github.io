@@ -11,7 +11,51 @@
     
     
     
+    
     <item>
+      <title>Version 0.54</title>
+      <pubDate>Tue, 21 Jul 2026 23:27:37 +0000</pubDate>
+      <sparkle:version>6</sparkle:version>
+      <sparkle:shortVersionString>0.54</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[
+<h3>General</h3>
+<ul>
+  <li>Prepare tab has been renamed 'import'</li>
+  <li>Settings window layout has been changed.</li>
+</ul>
+<h3>Audio</h3>
+<ul>
+  <li>Importing a video with more than 4 channels will now prompt how many you want. Extra channels means extra CPU work for metering so we try and avoid doing too many.</li>
+</ul>
+<h3>Show Management</h3>
+<ul>
+  <li>FIXED: Deleting the first video in a multi-video performance no longer causes the second video to disappear and the first video's label to be cleared. The remaining video is now correctly promoted to primary.</li>
+</ul>
+<h3>Console connection</h3>
+<ul>
+  <li>FIXED: Selecting MA3 now opens the UDP connection</li>
+</ul>
+<h3>Playback</h3>
+<ul>
+  <li>Changing playback status via keyboard (play and pause buttons) now updates the UI</li>
+</ul>
+<h3>Analysis</h3>
+<ul>
+  <li>Better OCR (text reading) skills in hopper to prevent slashes (/) being detected as 1. Additionally logic now applies so if the OCR does detect a 1, Hopper will see that this is likely an errror for instance detecting cue 1,2,3,13,4,5 likely means the 13 is actually /3 and disregards.</li>
+  <li>Hopper can now handle centre-justified text and auto expands left and right instead of just right.</li>
+  <li>Hopper can now connect to your ETC Eos and load correct labels to fix and OCR errors on labels.</li>
+  <li>The menu bar remains pinned open when in fullscreen Import mode.</li>
+</ul>
+      ]]></description>
+      <enclosure
+        url="https://hopperplayer.com/releases/Hopper_v0.54.dmg"
+        sparkle:edSignature="H+tDV47CZBcCwmL0QDWic+zyzUQlPK5k0zLp0xL46SxFyk1M1bD9idWwrRbhSDxpKw6reC7Pvi4x8llhLfJQBA=="
+        length="7079623"
+        type="application/x-apple-diskimage"
+      />
+    </item>
+<item>
       <title>Version 0.53</title>
       <pubDate>Sun, 26 Apr 2026 01:28:13 +0000</pubDate>
       <sparkle:version>5</sparkle:version>
